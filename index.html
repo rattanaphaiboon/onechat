@@ -9,10 +9,10 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.47">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.48">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.47">
-<title>Rattana One Chat v2.47</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.48">
+<title>Rattana One Chat v2.48</title>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
@@ -1139,7 +1139,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.47 · 21/10/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.48 · 21/10/2569</div>
   </div>
 </div>
 
@@ -1189,7 +1189,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.47</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.48</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1469,7 +1469,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.47 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.48 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1518,6 +1518,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.45: ตรวจบั๊กทั้งระบบ — ผลค้นหาในรายการแชทเปิดแชทได้ (ชื่อฟังก์ชันซ้ำ) · วางหลายรูปไม่ส่งผิดแชท · สลับบัญชีไม่เอาข้อมูลบัญชีเก่ามาทับ · ข้อความใหม่ไม่หายตอนรีเฟรช · รูปที่เพิ่งส่งไม่แตก · แจ้งเตือนข้ามบัญชี/งานแท็กสินค้าในแชทไม่นับ · บรอดแคสต์/ตั้งค่า/สมาชิก PU · ป้ายคลังอ่านชีทเมื่อมีชื่อใหม่
 //  v2.46 (19/10/2569): ย้ายไป rattanaphaiboon.github.io/app/onechat/ · ข้อความยาวจากระบบ (ROO) ไม่ขึ้น "แอพไม่ได้รับเนื้อการ์ด" (คู่กับ pur-card v2.2 รับข้อความธรรมดา) · แดชบอร์ดไม่นับงานแท็กของสมาชิกที่ถูกลบ (member_removed)
 //  v2.47 (21/10/2569): ข้อความตอบด่วนยาวไม่ดันช่องแชทเกินจอ (chat-pane min-width:0 · ชิปกว้างสุด 340px ตัด …) · ปุ่มปิดแชท ✕ / Esc บนคอม
+//  v2.48 (21/10/2569): คำอธิบายการ์ดแท็กสินค้าตามกติกาใหม่ (pur-product-tag v1.0.4 — ยี่ห้อต้องยืนเป็นคำจริง ไม่ซ่อนกลางคำ/ไม่ใช่คำทั่วไป ชื่อร้าน ชื่อคน)
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -5739,7 +5740,7 @@ function prodCardHtml(){
   const inp = (id, v, ph, w) => `<input class="input" id="${id}" value="${esc(v || '')}" placeholder="${esc(ph)}"${w ? ` style="width:${w}"` : ''}>`;
   return `<div class="card card-gold" id="prodCard"><div class="card-head"><h3>🏷 แท็กผู้รับผิดชอบสินค้าอัตโนมัติ · ${esc(acctName())}</h3>
     <div class="hint">มีคนพิมพ์ชื่อสินค้า/ยี่ห้อ (หรือส่งรูปสินค้า — ถ้าเปิดอ่านรูปไว้) ในแชท → ระบบหาผู้รับผิดชอบจากชีท แล้วเปิดงาน <b>"แท็กถึงคุณ"</b> ให้คนนั้น นับเวลาตอบ + แจ้งเตือนเหมือนโดน @ ·
-      ไม่ส่งอะไรเข้า LINE · ไม่แท็กถ้าผู้รับผิดชอบสินค้าเป็นผู้รับผิดชอบแชทอยู่แล้ว · จับแค่ยี่ห้อได้เฉพาะข้อความที่ถาม/ขอ (เข้า · มีไหม · ยัง · สั่ง · หมด · ขาด · ?) · ซิงก์ชีทใหม่ทุกวัน 05:40</div></div>
+      ไม่ส่งอะไรเข้า LINE · ไม่แท็กถ้าผู้รับผิดชอบสินค้าเป็นผู้รับผิดชอบแชทอยู่แล้ว · ข้อความพิมพ์ต้องตรงชื่อสินค้า (ยี่ห้อ + รายละเอียด) — คำทั่วไปที่บังเอิญเป็นชื่อยี่ห้อไม่นับ · รูปที่ AI อ่านได้จับจากยี่ห้อได้ · ซิงก์ชีทใหม่ทุกวัน 05:40</div></div>
     <div class="card-body">
       <div class="field"><label>ชีทสินค้า (เช่น PDDT) — ชื่อสินค้า / เวนเดอร์</label>${inp('prUrl', cfg.pddt_url, 'https://docs.google.com/spreadsheets/d/…#gid=…')}
         <div style="display:flex;gap:8px;margin-top:6px">${inp('prName', cfg.name_col || 'A', 'A', '80px')}${inp('prVend', cfg.vendor_col || 'BH', 'BH', '80px')}<span class="mini" style="align-self:center">คอลัมน์ชื่อสินค้า · คอลัมน์เวนเดอร์</span></div></div>
