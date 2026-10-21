@@ -9,10 +9,10 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.49">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.50">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.49">
-<title>Rattana One Chat v2.49</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.50">
+<title>Rattana One Chat v2.50</title>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
@@ -1139,7 +1139,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.49 · 21/10/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.50 · 21/10/2569</div>
   </div>
 </div>
 
@@ -1189,7 +1189,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.49</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.50</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1469,7 +1469,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.49 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.50 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1520,6 +1520,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.47 (21/10/2569): ข้อความตอบด่วนยาวไม่ดันช่องแชทเกินจอ (chat-pane min-width:0 · ชิปกว้างสุด 340px ตัด …) · ปุ่มปิดแชท ✕ / Esc บนคอม
 //  v2.48 (21/10/2569): คำอธิบายการ์ดแท็กสินค้าตามกติกาใหม่ (pur-product-tag v1.0.4 — ยี่ห้อต้องยืนเป็นคำจริง ไม่ซ่อนกลางคำ/ไม่ใช่คำทั่วไป ชื่อร้าน ชื่อคน)
 //  v2.49 (21/10/2569): ไฟล์เก่าเกิน 21 วันย้ายไป Google Drive ของบริษัท (pur-archive) — content "gd:<รหัส>" รูปเปิดจาก Drive ตรง (lh3 → thumbnail สำรอง) · ไฟล์/วิดีโอ/เสียง = ลิงก์เปิดใน Drive · บันทึกรูป = ดาวน์โหลดผ่าน Drive
+//  v2.50 (21/10/2569): ลด Egress — ครบ 10 นาทีเทียบแค่ id+updated_at ของแชท (ไม่ตรงค่อยโหลดเต็ม) · ข้อความแชทที่เปิดโหลดซ้ำทุก 15 นาที · แดชบอร์ดโหลดซ้ำ 5/15 นาที
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1811,7 +1812,22 @@ const tsOf = v => { const t = Date.parse(v || ''); return isNaN(t) ? 0 : t; };
 const maxUpdated = rows => rows.reduce((m, r) => tsOf(r.updated_at) > tsOf(m) ? r.updated_at : m, null);
 // คืน Set ของแชทที่เปลี่ยน · null = เพิ่งโหลดเต็ม (ถือว่าอาจเปลี่ยนทุกแชท)
 async function syncChats(){
-  if(!chatSync || Date.now() - lastFullChats > FULL_CHATS_MS){ await loadChats(); return null; }
+  if(!chatSync){ await loadChats(); return null; }
+  // v2.50 ครบ 10 นาที: ขอแค่ id + updated_at (~1/20 ของแถวเต็ม · บัญชีจัดซื้อแถวเต็ม ~900 KB) — ตรงกันหมด = ไม่ต้องโหลดเต็ม
+  // มีแชทหาย/เพิ่ม/เวลาไม่ตรง (ถูกรวม/ลบ/realtime หลุด) ค่อยโหลดเต็มแบบเดิม
+  if(Date.now() - lastFullChats > FULL_CHATS_MS){
+    const aid = acct.id, ids = [];
+    for(let from = 0;; from += 1000){
+      const { data, error } = await sb.from('pur_chats').select('id,updated_at').eq('account_id', aid).order('id').range(from, from + 999);
+      if(error) throw new Error(error.message);
+      ids.push(...(data || [])); if(!data || data.length < 1000) break;
+    }
+    if(acct?.id !== aid) return new Set();
+    const edge = tsOf(chatSync) - SYNC_OVERLAP_MS;                // แถวที่ใหม่กว่านี้ รอบย่อยด้านล่างดึงให้อยู่แล้ว
+    const same = ids.length === chatById.size && ids.every(r => { const o = chatById.get(r.id); return o && (tsOf(o.updated_at) >= tsOf(r.updated_at) || tsOf(r.updated_at) > edge); });
+    if(!same){ await loadChats(); return null; }
+    lastFullChats = Date.now();
+  }
   const acctId = acct.id, since = new Date(tsOf(chatSync) - SYNC_OVERLAP_MS).toISOString();
   const { data, error } = await sb.from('pur_chats').select('*').eq('account_id', acctId).gt('updated_at', since);
   if(error) throw new Error(error.message);
@@ -6667,9 +6683,9 @@ function startAutoRefresh(){
     // แดชบอร์ดโหลดใหม่เมื่อมีแชทเปลี่ยนและห่างจากครั้งก่อน ≥2 นาที (หรือทุก 10 นาที) — realtime ส่งของใหม่มาให้อยู่แล้ว
     try{
       const changed = await syncChats(), now = Date.now();
-      if(activeId && (changed === null || (changed.has(activeId) && activeMissingMsgs()) || now - lastMsgRefresh > 5 * 60 * 1000))
+      if(activeId && (changed === null || (changed.has(activeId) && activeMissingMsgs()) || now - lastMsgRefresh > 15 * 60 * 1000))   // v2.50 5 → 15 นาที (realtime ส่งข้อความใหม่มาให้อยู่แล้ว)
         await refreshActiveMsgs();   // เช็ค activeId ซ้ำหลัง await — ไม่วาดข้อความแชทเก่าทับแชทที่เพิ่งเปิด
-      if(view === 'dash' && ((changed === null || changed.size) && now - dashLoadedAt > 2 * 60 * 1000 || now - dashLoadedAt > 10 * 60 * 1000))
+      if(view === 'dash' && ((changed === null || changed.size) && now - dashLoadedAt > 5 * 60 * 1000 || now - dashLoadedAt > 15 * 60 * 1000))   // v2.50 2/10 → 5/15 นาที (แดชบอร์ด 7 วันของจัดซื้อ ~340 KB/ครั้ง)
         await loadDash();
     }
     catch(e){ console.warn('auto refresh:', e.message); } finally{ refreshing = false; }
