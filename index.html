@@ -9,10 +9,10 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.48">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.49">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.48">
-<title>Rattana One Chat v2.48</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.49">
+<title>Rattana One Chat v2.49</title>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
@@ -1139,7 +1139,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.48 · 21/10/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.49 · 21/10/2569</div>
   </div>
 </div>
 
@@ -1189,7 +1189,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.48</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.49</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1451,7 +1451,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <div class="lb-bar"><div class="lb-ttl" id="lbTtl"></div>
     <button class="lb-btn" onclick="lbSave()" title="บันทึกรูปลงเครื่อง">⬇</button>
     <button class="lb-btn" onclick="lbClose()" title="ปิด (Esc)">✕</button></div>
-  <div class="lb-stage" id="lbStage" onclick="if(event.target===this)lbClose()"><img id="lbImg" alt="" onclick="lbZoom(event)"></div>
+  <div class="lb-stage" id="lbStage" onclick="if(event.target===this)lbClose()"><img id="lbImg" alt="" referrerpolicy="no-referrer" onclick="lbZoom(event)"></div>
   <button class="lb-nav lb-prev" id="lbPrev" onclick="lbGo(-1)" title="รูปก่อนหน้า (←)">‹</button>
   <button class="lb-nav lb-next" id="lbNext" onclick="lbGo(1)" title="รูปถัดไป (→)">›</button>
   <div class="lb-foot" id="lbFoot"></div>
@@ -1469,7 +1469,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.48 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.49 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1519,6 +1519,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.46 (19/10/2569): ย้ายไป rattanaphaiboon.github.io/app/onechat/ · ข้อความยาวจากระบบ (ROO) ไม่ขึ้น "แอพไม่ได้รับเนื้อการ์ด" (คู่กับ pur-card v2.2 รับข้อความธรรมดา) · แดชบอร์ดไม่นับงานแท็กของสมาชิกที่ถูกลบ (member_removed)
 //  v2.47 (21/10/2569): ข้อความตอบด่วนยาวไม่ดันช่องแชทเกินจอ (chat-pane min-width:0 · ชิปกว้างสุด 340px ตัด …) · ปุ่มปิดแชท ✕ / Esc บนคอม
 //  v2.48 (21/10/2569): คำอธิบายการ์ดแท็กสินค้าตามกติกาใหม่ (pur-product-tag v1.0.4 — ยี่ห้อต้องยืนเป็นคำจริง ไม่ซ่อนกลางคำ/ไม่ใช่คำทั่วไป ชื่อร้าน ชื่อคน)
+//  v2.49 (21/10/2569): ไฟล์เก่าเกิน 21 วันย้ายไป Google Drive ของบริษัท (pur-archive) — content "gd:<รหัส>" รูปเปิดจาก Drive ตรง (lh3 → thumbnail สำรอง) · ไฟล์/วิดีโอ/เสียง = ลิงก์เปิดใน Drive · บันทึกรูป = ดาวน์โหลดผ่าน Drive
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -2404,7 +2405,19 @@ function sysCardOf(m){
   const t = String(m.content || '').trim();
   return s.alts.some(r => r.test(t)) ? s.who : null;
 }
-const mediaAttr = (content, attr = 'src') => /^(https?:\/\/|blob:)/.test(content) ? `${attr}="${esc(content)}"` : `data-path="${esc(content)}"`;   // v2.45 blob: = รูปในเครื่องที่กำลังส่ง
+// v2.49 ไฟล์เก่าเกิน 21 วันย้ายไป Google Drive ของบริษัท (pur-archive) → content = "gd:<รหัสไฟล์>" เปิดจาก Drive ตรงๆ ไม่ต้องขอลิงก์ลงนาม
+const gdId   = c => (/^gd:([\w-]{10,})$/.exec(String(c || '')) || [])[1] || '';
+const gdView = id => `https://drive.google.com/file/d/${id}/view`;
+const gdImg  = id => `https://lh3.googleusercontent.com/d/${id}=w1600`;
+const gdImgAlt = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
+const gdOfUrl = u => (/lh3\.googleusercontent\.com\/d\/([\w-]{10,})|drive\.google\.com\/thumbnail\?id=([\w-]{10,})/.exec(String(u || '')) || []).slice(1).find(Boolean) || '';
+function gdImgErr(img){ const id = gdOfUrl(img.src); if(id && !img.dataset.alt){ img.dataset.alt = 1; img.src = gdImgAlt(id); } }
+const mediaAttr = (content, attr = 'src') => {
+  const g = gdId(content);
+  if(g) return attr === 'src' ? `src="${esc(gdImg(g))}" referrerpolicy="no-referrer" onerror="gdImgErr(this)"` : `${attr}="${esc(gdView(g))}"`;
+  return /^(https?:\/\/|blob:)/.test(content) ? `${attr}="${esc(content)}"` : `data-path="${esc(content)}"`;   // v2.45 blob: = รูปในเครื่องที่กำลังส่ง
+};
+const gdLink = (id, label) => `<a href="${esc(gdView(id))}" target="_blank" rel="noopener">${label} · เปิดใน Google Drive</a>`;
 function bubbleBody(m){
   const c = m.content || '';
   const sc = sysCardOf(m);
@@ -2415,8 +2428,8 @@ function bubbleBody(m){
   switch(m.msg_type){
     case 'sticker': return [`<img class="sticker" src="${esc(c)}" alt="สติกเกอร์" loading="lazy">`, true];
     case 'image':   return [`<img class="photo" ${mediaAttr(c)} alt="รูปภาพ" loading="lazy" onclick="lbOpen(this)">`, true];
-    case 'video':   return [`<video class="photo" ${mediaAttr(c)} controls preload="metadata"></video>`, true];
-    case 'audio':   return [`<audio ${mediaAttr(c)} controls preload="metadata" style="max-width:240px"></audio>`, true];
+    case 'video':   return gdId(c) ? [gdLink(gdId(c), '🎬 วิดีโอ'), false] : [`<video class="photo" ${mediaAttr(c)} controls preload="metadata"></video>`, true];
+    case 'audio':   return gdId(c) ? [gdLink(gdId(c), '🎵 เสียง'), false] : [`<audio ${mediaAttr(c)} controls preload="metadata" style="max-width:240px"></audio>`, true];
     case 'file':    return [`<a href="#" ${mediaAttr(c, 'data-url')} onclick="openFile(event,this)">📎 ${esc(m.file_name || 'เปิดไฟล์แนบ')}</a>`, false];
     // การ์ด Flex จากระบบภายใน (เช่น ระบบใบสั่งซื้อ) — วาดให้เหมือนที่ซัพพลายเออร์เห็นใน LINE
     case 'flex': {
@@ -3102,6 +3115,8 @@ function lbClose(fromPop){
 window.addEventListener('popstate', () => lbClose(true));
 function lbSave(){ const img = lbList[lbIdx]; if(img?.src) saveImg(img.src); }
 async function saveImg(src){
+  const gd = gdOfUrl(src);                                      // v2.49 รูปใน Drive อ่านข้ามเว็บไม่ได้ → ให้ Drive ดาวน์โหลดเอง
+  if(gd){ window.open(`https://drive.google.com/uc?export=download&id=${gd}`, '_blank'); return; }
   const name = `rattana-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}.jpg`;
   try{
     const blob = await (await fetch(src)).blob(), u = URL.createObjectURL(blob);
