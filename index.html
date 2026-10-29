@@ -9,10 +9,10 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.51">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.52">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.51">
-<title>Rattana One Chat v2.51</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.52">
+<title>Rattana One Chat v2.52</title>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
@@ -154,7 +154,8 @@ body.dark .bni .nbadge{border-color:#1a2744}
 .conv-item.awaiting.over::before{background:var(--st-crit)}
 .conv-item.resolved{opacity:.6}
 .av-wrap{position:relative;flex-shrink:0;margin-top:2px}
-.av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;object-fit:cover;flex-shrink:0;background:var(--border)}
+.av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;object-fit:cover;flex-shrink:0;background:var(--border);position:relative;overflow:hidden}
+.av>img.av-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
 .av.group{border-radius:14px;font-size:20px}
 .pdot{position:absolute;bottom:-2px;right:-3px;width:17px;height:17px;border-radius:50%;border:2px solid var(--card-bg);background:var(--line);color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center}
 .conv-info{flex:1;min-width:0}
@@ -1139,7 +1140,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.51 · 24/10/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.52 · 29/10/2569</div>
   </div>
 </div>
 
@@ -1189,7 +1190,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.51</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.52</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1469,7 +1470,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.51 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.52 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1522,6 +1523,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.49 (21/10/2569): ไฟล์เก่าเกิน 21 วันย้ายไป Google Drive ของบริษัท (pur-archive) — content "gd:<รหัส>" รูปเปิดจาก Drive ตรง (lh3 → thumbnail สำรอง) · ไฟล์/วิดีโอ/เสียง = ลิงก์เปิดใน Drive · บันทึกรูป = ดาวน์โหลดผ่าน Drive
 //  v2.50 (21/10/2569): ลด Egress — ครบ 10 นาทีเทียบแค่ id+updated_at ของแชท (ไม่ตรงค่อยโหลดเต็ม) · ข้อความแชทที่เปิดโหลดซ้ำทุก 15 นาที · แดชบอร์ดโหลดซ้ำ 5/15 นาที
 //  v2.51 (24/10/2569): หน้าต่างไม่ปิดเองตอนกรอก — ปิดจากพื้นหลังเฉพาะกด+ปล่อยบนพื้นหลัง และยังไม่ได้แก้ช่องไหน (เดิมลากเลือกข้อความแล้วปล่อยนอกกล่อง = ปิดทิ้ง ข้อมูลหาย) · คอมเมนต์ไฟล์ไป Drive หลัง 2 วัน
+//  v2.52 (29/10/2569): รูปโปรไฟล์ LINE ที่ลิงก์หมดอายุ (404) แสดงวงกลมอักษรแทนรูปแตก (avatarHtml/avatarSm) · คู่กับ pur-webhook-line v2.8 ดึงรูปใหม่ทุก 3 วัน
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1990,10 +1992,10 @@ function filteredChats(){
 // รูปโปรไฟล์มาจากภายนอก (LINE/OA) แล้วถูกฝังใน style="…url('…')" — esc() กัน HTML ได้ แต่ไม่กัน ) \ ที่หลุดออกจาก url() ของ CSS
 // รับเฉพาะ http(s) ที่ไม่มี ' " ( ) \ < > ช่องว่าง (ยังต้อง esc ซ้ำ กัน &…; ถูกถอดใน attribute) · ไม่ผ่าน = โชว์อักษรตัวแรกตามเดิม
 const safeImg = u => /^https?:\/\/[^\s'"()\\<>]+$/i.test(String(u || '')) ? String(u) : null;
+// v2.52 อักษรตัวแรกอยู่ข้างใต้เสมอ รูปทับข้างบน — รูปจาก LINE หมดอายุ/เปิดไม่ได้ (404) = รูปหายไป เห็นอักษรแทน (เดิมเป็นวงกลมสีเปล่า)
 function avatarHtml(c, size){
   const grp = c.kind !== 'user'; const name = chatName(c); const av = safeImg(c.avatar_url);
-  const bg = av ? `${avCol(name)} url('${esc(av)}') center/cover no-repeat` : avCol(name);
-  return `<div class="av ${grp ? 'group' : ''}" style="background:${bg};${size ? `width:${size}px;height:${size}px;font-size:${Math.round(size*.36)}px` : ''}">${av ? '' : (grp ? '👥' : esc(name.charAt(0)))}</div>`;
+  return `<div class="av ${grp ? 'group' : ''}" style="background:${avCol(name)};${size ? `width:${size}px;height:${size}px;font-size:${Math.round(size*.36)}px` : ''}">${grp ? '👥' : esc(name.charAt(0))}${av ? `<img class="av-img" src="${esc(av)}" alt="" loading="lazy" onerror="this.remove()">` : ''}</div>`;
 }
 const LIST_STEP = 80;            // วาดทีละเท่านี้ เลื่อนถึงท้ายค่อยต่อ — 438 รายการรวดเดียวหนักเกินไปสำหรับมือถือ
 let listShown = LIST_STEP;
@@ -5325,7 +5327,11 @@ function refreshPeopleCards(){
   const lc = $('linkCard'); if(lc){ const keep = $('linkCodeBox')?.innerHTML || ''; lc.outerHTML = linkCardHtml(); if(keep) $('linkCodeBox').innerHTML = keep; }
   renderPeopleRows();
 }
-function avatarSm(p){ return p.avatar_url ? `<img class="avs" src="${esc(p.avatar_url)}" alt="" loading="lazy">` : `<span class="avs" style="background:${avCol(p.display_name || p.line_user_id)}">${esc((p.display_name || '?').charAt(0))}</span>`; }
+// v2.52 รูปเปิดไม่ได้ (ลิงก์ LINE หมดอายุ) → เปลี่ยนเป็นวงกลมอักษรตัวแรก แทนไอคอนรูปแตก
+function avatarSm(p){
+  const letter = `<span class="avs" style="background:${avCol(p.display_name || p.line_user_id)}">${esc((p.display_name || '?').charAt(0))}</span>`;
+  return safeImg(p.avatar_url) ? `<img class="avs" src="${esc(p.avatar_url)}" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fb" data-fb="${esc(letter)}">` : letter;
+}
 
 // ── บัญชี LINE (ผู้ดูแลระบบ) — สถานะการเชื่อมต่อ + ลิงก์ webhook ของแต่ละบัญชี ──
 let acctStatus = null, accessMx = null, accessShowRemoved = false;
