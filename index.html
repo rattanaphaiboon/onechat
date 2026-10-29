@@ -9,10 +9,10 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.52">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.53">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.52">
-<title>Rattana One Chat v2.52</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.53">
+<title>Rattana One Chat v2.53</title>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
@@ -162,6 +162,7 @@ body.dark .bni .nbadge{border-color:#1a2744}
 .conv-row1{display:flex;align-items:baseline;gap:6px}
 .conv-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
 .conv-item.unread .conv-name{font-weight:700}
+.fb-tag{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:#1877f2;color:#fff;font:700 11px/1 Arial,sans-serif;margin-right:5px;vertical-align:1px}
 .conv-time{font-size:10px;color:var(--sub);white-space:nowrap;flex-shrink:0}
 .conv-row2{display:flex;align-items:center;gap:6px;margin-top:1px}
 .conv-prev{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
@@ -1140,7 +1141,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.52 · 29/10/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.53 · 29/10/2569</div>
   </div>
 </div>
 
@@ -1190,7 +1191,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.52</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.53</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1470,7 +1471,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.52 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.53 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1524,6 +1525,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.50 (21/10/2569): ลด Egress — ครบ 10 นาทีเทียบแค่ id+updated_at ของแชท (ไม่ตรงค่อยโหลดเต็ม) · ข้อความแชทที่เปิดโหลดซ้ำทุก 15 นาที · แดชบอร์ดโหลดซ้ำ 5/15 นาที
 //  v2.51 (24/10/2569): หน้าต่างไม่ปิดเองตอนกรอก — ปิดจากพื้นหลังเฉพาะกด+ปล่อยบนพื้นหลัง และยังไม่ได้แก้ช่องไหน (เดิมลากเลือกข้อความแล้วปล่อยนอกกล่อง = ปิดทิ้ง ข้อมูลหาย) · คอมเมนต์ไฟล์ไป Drive หลัง 2 วัน
 //  v2.52 (29/10/2569): รูปโปรไฟล์ LINE ที่ลิงก์หมดอายุ (404) แสดงวงกลมอักษรแทนรูปแตก (avatarHtml/avatarSm) · คู่กับ pur-webhook-line v2.8 ดึงรูปใหม่ทุก 3 วัน
+//  v2.53 (29/10/2569): แชท Facebook Messenger (pur-fb) — ป้าย f · หัวแชท Facebook Messenger · เตือนเกิน 24 ชม. · ปิดสติกเกอร์ LINE · ไม่อยู่ในบรอดแคสต์ · ตอบกลับแบบอ้างข้อความไม่ได้
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1638,7 +1640,7 @@ const forceReply  = new Set();        // แชทที่ผู้ใช้ก
 const isSup   = () => !!me && (me.role === 'supervisor' || me.role === 'admin');
 const isAdmin = () => !!me && me.role === 'admin';
 const roleLabel = r => r === 'admin' ? 'ผู้ดูแลระบบ' : r === 'supervisor' ? 'หัวหน้า' : 'พนักงาน';
-const viaLabel  = v => v === 'app' ? 'แอป' : v === 'oa' ? 'OA Manager' : 'LINE';
+const viaLabel  = v => v === 'app' ? 'แอป' : v === 'oa' ? 'OA Manager' : v === 'fb' ? 'Facebook' : 'LINE';
 
 function defaultSettings(){
   return { work_days:[1,2,3,4,5,6], work_start:'08:00', work_end:'17:00', holidays:[], sla_minutes:60,
@@ -2158,7 +2160,7 @@ function renderList(){
     return `<div class="${cls}" data-id="${c.id}" onclick="openChat('${c.id}')">
       <div class="av-wrap">${avatarHtml(c)}<div class="pdot">L</div></div>
       <div class="conv-info">
-        <div class="conv-row1"><div class="conv-name">${esc(chatName(c))}</div><div class="conv-time">${timeAgo(c.last_message_at)}</div></div>
+        <div class="conv-row1"><div class="conv-name">${isFbChat(c) ? '<span class="fb-tag" title="Facebook Messenger">f</span>' : ''}${esc(chatName(c))}</div><div class="conv-time">${timeAgo(c.last_message_at)}</div></div>
         <div class="conv-row2"><div class="conv-prev">${esc(c.last_message || '')}</div>${c.unread_count > 0 ? `<div class="ubadge">${c.unread_count}</div>` : ''}</div>
         <div class="conv-row3">${tags.join('')}</div>${mPop}
       </div></div>`;
@@ -2313,9 +2315,9 @@ function closeChat(){
 }
 function renderChatHeader(c){
   $('chatName').textContent = chatName(c);
-  const parts = [c.kind === 'user' ? 'แชท 1:1' : c.kind === 'group' ? 'กลุ่ม LINE' : 'ห้องแชทรวม'];
+  const parts = [isFbChat(c) ? 'Facebook Messenger' : c.kind === 'user' ? 'แชท 1:1' : c.kind === 'group' ? 'กลุ่ม LINE' : 'ห้องแชทรวม'];
   if(c.member_count) parts.push(`${c.member_count} คน`);
-  if(c.supplier_name && c.title && c.supplier_name !== c.title) parts.push('LINE: ' + c.title);
+  if(c.supplier_name && c.title && c.supplier_name !== c.title) parts.push((isFbChat(c) ? 'Facebook: ' : 'LINE: ') + c.title);
   if(c.note) parts.push('📝 ' + c.note);
   $('chatSub').textContent = parts.join(' · ');
   $('chatAv').outerHTML = avatarHtml(c, 38).replace('class="av', 'id="chatAv" class="av');
@@ -2393,6 +2395,10 @@ async function dismissMention(id){
 // แชทที่ส่วนขยายดึงมาจาก OA Manager แต่แอพยังไม่รู้รหัส LINE จริง (line_id = 'oa:…') — Messaging API ส่งหาไม่ได้
 // pur-send ปฏิเสธอยู่แล้ว · ฝั่งแอพปิดช่องพิมพ์ไว้เลย จะได้ไม่พิมพ์ยาวแล้วค่อยรู้ว่าส่งไม่ได้ (ไม่มีปุ่ม "ลองส่งดูอยู่ดี" เพราะส่งไม่ได้แน่)
 const isOaOnly = c => String(c?.line_id || '').startsWith('oa:');
+// v2.53 แชท Facebook Messenger ของเพจบริษัท (pur-fb ดึงทุก 1 นาที) — line_id "fb:<pageId>:<psid>"
+const isFbChat = c => String(c?.line_id || '').startsWith('fb:');
+const FB_WINDOW_MS = 24 * 3600 * 1000;    // Facebook ให้เพจส่งข้อความได้ภายใน 24 ชม. หลังข้อความล่าสุดของลูกค้า
+const fbExpired = c => isFbChat(c) && (!c.last_inbound_at || Date.now() - Date.parse(c.last_inbound_at) > FB_WINDOW_MS);
 const OA_ONLY_MSG = 'แชทนี้แอพยังไม่รู้รหัส LINE จริง — ตอบใน LINE OA Manager ไปก่อน';
 function applyReplyState(c){
   const oaOnly = isOaOnly(c);
@@ -2402,8 +2408,12 @@ function applyReplyState(c){
   // ใบสั่งสินค้า (การ์ด) มีเฉพาะบัญชีจัดซื้อ
   note.innerHTML = oaOnly ? `<span>⚠️ ${OA_ONLY_MSG} <span class="txt-muted">(ระบบจะได้รหัสเองเมื่อ${peer()}ทักเข้ามา${acct?.id === 1 ? 'หรือมีการส่งใบสั่งสินค้า' : ' แล้วตอบจากแอพได้ทันที'})</span></span>`
     : blocked ? `⚠️ ส่งจากหน้านี้ไม่ได้ในตอนนี้ <button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="forceReply.add(activeId);applyReplyState(chatById.get(activeId))">ลองส่งดูอยู่ดี</button>` : '';
-  note.classList.toggle('show', blocked);
-  $('replyInp').disabled = blocked; $('sendBtn').disabled = blocked; $('attachBtn').disabled = blocked; $('fileBtn').disabled = blocked; $('emoBtn').disabled = blocked; if(blocked) emoHide();
+  // v2.53 Facebook: เกิน 24 ชม. หลังลูกค้าทักล่าสุด = Facebook ไม่ให้ส่ง (เตือนไว้ ยังกดส่งได้ — ถ้าลูกค้าเพิ่งทักแต่ยังดึงไม่ถึงจะได้ไม่ติด)
+  const fbLate = !blocked && fbExpired(c);
+  if(fbLate) note.innerHTML = `<span>⚠️ ลูกค้าทักล่าสุดเกิน 24 ชม. — Facebook ไม่ให้เพจส่งข้อความหา <span class="txt-muted">(ตอบใน Meta Business Suite หรือรอลูกค้าทักมาก่อน)</span></span>`;
+  note.classList.toggle('show', blocked || fbLate);
+  $('replyInp').disabled = blocked; $('sendBtn').disabled = blocked; $('attachBtn').disabled = blocked; $('fileBtn').disabled = blocked;
+  $('emoBtn').disabled = blocked || isFbChat(c); if(blocked || isFbChat(c)) emoHide();   // สติกเกอร์เป็นของ LINE (อิโมจิพิมพ์จากคีย์บอร์ดได้)
   $('replyInp').placeholder = oaOnly ? 'ตอบใน LINE OA Manager' : blocked ? 'ส่งไม่ได้ในตอนนี้' : 'พิมพ์ข้อความ… (วางรูปได้ด้วย Ctrl+V)';
 }
 function renderQuick(){
@@ -2852,6 +2862,7 @@ function startQuote(id){
 function canQuoteMsg(m, c){ return !!(m && m.quote_token && !m.unsent && !m.tmp && c && c.is_active && !isOaOnly(c)); }
 function quoteWhyNot(m){
   if(m.unsent) return 'ข้อความนี้ถูกยกเลิกแล้ว';
+  if(m.via === 'fb' || isFbChat(chatById.get(m.chat_id))) return 'แชท Facebook ตอบกลับแบบอ้างข้อความจากแอพยังไม่ได้ — พิมพ์ตอบตามปกติได้';
   if(m.via === 'oa') return 'ข้อความที่พิมพ์ใน OA Manager ตอบกลับจากแอพไม่ได้ (LINE ไม่ส่งรหัสอ้างอิงมาให้)';
   if(m.is_history) return 'ข้อความประวัติที่นำเข้าก่อนใช้ระบบ ตอบกลับไม่ได้';
   return 'ข้อความนี้ตอบกลับแบบ LINE ไม่ได้ (ไม่มีรหัสอ้างอิงจาก LINE)';
@@ -3568,7 +3579,7 @@ async function saveChatTags(){
 function openEditChat(){
   const c = chatById.get(activeId); if(!c) return;
   openModal('ข้อมูลแชท', `
-    <div class="field"><label>ชื่อจาก LINE</label><div class="txt-sm">${esc(c.title || '—')} <span class="txt-muted">· ${c.kind === 'user' ? 'แชท 1:1' : 'กลุ่ม'}</span></div></div>
+    <div class="field"><label>ชื่อจาก ${isFbChat(c) ? 'Facebook' : 'LINE'}</label><div class="txt-sm">${esc(c.title || '—')} <span class="txt-muted">· ${c.kind === 'user' ? 'แชท 1:1' : 'กลุ่ม'}</span></div></div>
     <div class="field"><label>ชื่อที่ทีมตั้ง (เช่น ชื่อ${peer()} + รหัส PU)</label><input class="input" id="edSupplier" value="${esc(c.supplier_name || '')}" placeholder="เช่น บจก. วัสดุก่อสร้าง A" oninput="edNameCount()">
       <span class="mini" id="edNameCnt"></span>
       ${c.oa_chat_id ? `<span class="mini">แก้แล้ว<b>ชื่อเล่นใน LINE OA Manager เปลี่ยนตามเอง</b>ภายในราว 1–2 นาที (ต้องมีเครื่องที่ติดส่วนขยายเปิดแท็บ chat.line.biz ไว้)${c.oa_alias_pending ? ` · <span class="lv-warn-txt">กำลังรอเปลี่ยนใน OA เป็น "${esc(c.oa_alias_pending)}"</span>` : ''}</span>` : ''}</div>
@@ -4762,7 +4773,7 @@ const blast = {
 // ── รายชื่อผู้รับที่เลือกได้ ──
 function blastCandidates(){
   const owned = puOwners();
-  let list = chats.filter(c => c.is_active !== false && c.status !== 'resolved');
+  let list = chats.filter(c => c.is_active !== false && c.status !== 'resolved' && !isFbChat(c));   // v2.53 Facebook ส่งได้เฉพาะภายใน 24 ชม. — ไม่อยู่ในบรอดแคสต์
   if(blast.mode === 'sheet') list = list.filter(c => blast.match.has(c.id));
   if(blast.pu === 'none')      list = list.filter(c => !c.assignee_email);
   else if(blast.pu === 'mine') list = list.filter(c => c.assignee_email === me.email);
@@ -5096,7 +5107,7 @@ function renderBlast(){
           <div class="tbl-wrap mt-8" style="max-height:230px">${S.unmatched.map((u, i) => `<div class="row" style="padding:4px 0;gap:8px">
             <span style="flex:1;min-width:120px">${esc(u.raw || '(ว่าง)')} <span class="mini">แถว ${u.i + 2} · ${esc(u.why)}</span></span>
             <select class="input input-sm" style="max-width:260px" onchange="blastAssignRow(${i}, this.value)">
-              <option value="">— เลือกแชท —</option>${chats.filter(c => !S.match.has(c.id) && !isOaOnly(c)).sort((a, b) => chatName(a).localeCompare(chatName(b), 'th')).map(c => `<option value="${c.id}">${esc(chatName(c))}</option>`).join('')}
+              <option value="">— เลือกแชท —</option>${chats.filter(c => !S.match.has(c.id) && !isOaOnly(c) && !isFbChat(c)).sort((a, b) => chatName(a).localeCompare(chatName(b), 'th')).map(c => `<option value="${c.id}">${esc(chatName(c))}</option>`).join('')}
             </select></div>`).join('')}</div></div>` : ''}` : ''}` : ''}
 
         <div class="field"><label>${no()}. ข้อความ</label>
