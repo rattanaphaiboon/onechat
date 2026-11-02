@@ -9,10 +9,10 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.54">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.55">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.54">
-<title>Rattana One Chat v2.54</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.55">
+<title>Rattana One Chat v2.55</title>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
@@ -1142,7 +1142,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.54 · 29/10/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.55 · 02/11/2569</div>
   </div>
 </div>
 
@@ -1192,7 +1192,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.54</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.55</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1425,6 +1425,15 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
         </div>
         <div class="card-body" id="topChats"></div>
       </div>
+
+      <div class="card card-gold" id="oosCard" hidden>
+        <div class="card-head">
+          <h3><span class="hb crit" data-ic="alert"></span>สินค้าขาด (จากข้อความแจ้ง) <span class="mini" id="oosCount"></span></h3>
+          <div class="hint">นับจากข้อความ <b>"ของใกล้หมด ยังไม่มีสั่งเข้า"</b> ที่ส่งเข้ากลุ่มในช่วงที่เลือก · <b>หมดแล้ว</b> = สต็อก 0 ตอนที่แจ้ง ·
+            <b>แจ้งซ้ำ</b> = สินค้าเดียวกันถูกแจ้งมากกว่า 1 ครั้งในช่วงนี้ · <b>ตอบรับในกลุ่ม</b> = เวลาจากข้อความแจ้งถึงข้อความตอบของทีมครั้งแรกในกลุ่มนั้น (ไม่ได้แปลว่าสั่งของแล้ว) · นับเฉพาะของที่มีคนแจ้ง</div>
+        </div>
+        <div class="card-body" id="oosBody"></div>
+      </div>
     </div>
   </section>
 
@@ -1472,7 +1481,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.54 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.55 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1528,6 +1537,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.52 (29/10/2569): รูปโปรไฟล์ LINE ที่ลิงก์หมดอายุ (404) แสดงวงกลมอักษรแทนรูปแตก (avatarHtml/avatarSm) · คู่กับ pur-webhook-line v2.8 ดึงรูปใหม่ทุก 3 วัน
 //  v2.53 (29/10/2569): แชท Facebook Messenger (pur-fb) — ป้าย f · หัวแชท Facebook Messenger · เตือนเกิน 24 ชม. · ปิดสติกเกอร์ LINE · ไม่อยู่ในบรอดแคสต์ · ตอบกลับแบบอ้างข้อความไม่ได้
 //  v2.54 (29/10/2569): แชท Facebook ใช้จุด f สีฟ้าที่มุมรูป (เดิมขึ้น L ทุกแชท) · ป้ายประวัติ "นำเข้าจาก Facebook"
+//  v2.55 (02/11/2569): แดชบอร์ด การ์ด "สินค้าขาด (จากข้อความแจ้ง)" — นับข้อความ "ของใกล้หมด ยังไม่มีสั่งเข้า" แยกตามจัดซื้อ/สินค้า/คลัง + Excel · ซิงก์ทะเบียนพนักงานทุก 5 นาที แก้อีเมล/ชื่อตามชีท (pur-staff-sync-v2.sql) แสดงสิ่งที่แก้ในหน้าสิทธิ์
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -4270,18 +4280,21 @@ async function loadDash(){
     if(DEMO){ dash.data = demoDash(); }
     else {
       const noMentions = e => { console.warn('mentions:', e.message); return []; };
-      const [w1, w2, rc, m1, m2] = await Promise.all([
+      const noOos = e => { console.warn('oos:', e.message); return []; };
+      const [w1, w2, rc, m1, m2, oos] = await Promise.all([
         fetchAll('pur_waits', q => q.eq('account_id', acct.id).gte('started_at', from.toISOString()).lt('started_at', to.toISOString()).order('started_at')),
         fetchAll('pur_waits', q => q.eq('account_id', acct.id).is('closed_at', null).order('started_at')),
         sb.rpc('pur_reply_counts', { p_from:from.toISOString(), p_to:to.toISOString(), p_account:acct.id }),
         fetchAll('pur_mentions', q => q.eq('account_id', acct.id).gte('started_at', from.toISOString()).lt('started_at', to.toISOString()).order('started_at')).catch(noMentions),
         fetchAll('pur_mentions', q => q.eq('account_id', acct.id).is('closed_at', null).order('started_at')).catch(noMentions),
+        fetchAll('pur_messages', q => q.select('id, chat_id, sent_at, content').eq('account_id', acct.id).eq('msg_type', 'text')
+          .like('content', OOS_HEAD + '%').gte('sent_at', from.toISOString()).lt('sent_at', to.toISOString()).order('sent_at')).catch(noOos),
       ]);
       if(seq !== dash.seq || acct?.id !== aid) return;     // มีคำขอใหม่กว่าแล้ว / v2.45 สลับบัญชีระหว่างรอ — ทิ้งผลชุดนี้
       if(rc.error) throw new Error(rc.error.message);
       const map = new Map(); [...w1, ...w2].forEach(w => map.set(w.id, withOwner(w)));
       const mm = new Map(); [...m1, ...m2].forEach(x => mm.set(x.id, x));
-      dash.data = { waits:[...map.values()], replies:rc.data || [], mentions:[...mm.values()] };
+      dash.data = { waits:[...map.values()], replies:rc.data || [], mentions:[...mm.values()], oos:oos.map(parseOos).filter(Boolean) };
     }
     dashLoadedOnce = true; renderDash(); checkOaFresh();
   }catch(e){ if(seq === dash.seq) showToast('โหลดแดชบอร์ดไม่สำเร็จ: ' + e.message, 'error'); }
@@ -4434,7 +4447,7 @@ function renderDash(){
   ].filter(Boolean);
 
   renderDaily(inR, from, to); renderHist(answered); renderHeat(inR);
-  renderPersons(inR, open, reps); renderBacklog(open); renderLate(); renderNoOwner(); renderTop(inR);
+  renderPersons(inR, open, reps); renderBacklog(open); renderLate(); renderNoOwner(); renderTop(inR); renderOos();
   renderDashAlerts();
 }
 // กล่อง "ต้องแก้ด่วน" บนสุดของแดชบอร์ด = การ์ดตัวเลข + รายคน + ส่วนขยาย OA เงียบ (checkOaFresh เรียกซ้ำเมื่อรู้ผล)
@@ -5294,6 +5307,70 @@ function renderTop(inR){
     : `<div class="conv-empty" style="padding:24px 10px">ไม่มีข้อมูลในช่วงนี้</div>`;
 }
 
+// ── สินค้าขาด: ข้อความแจ้ง "ของใกล้หมด ยังไม่มีสั่งเข้า" (รูปแบบตายตัว ส่งเข้ากลุ่มจัดซื้อ) ──
+// บรรทัด 2 = ชื่อสินค้า · "คลัง W1: ของหมดแล้ว (สต็อก …)" / "คลัง W4: เหลือขาย ~4 วัน (…)" · "จัดซื้อ: อ้อย (ชื่อเต็ม)" · "แจ้งโดย: ชื่อ"
+const OOS_HEAD = 'ของใกล้หมด';
+function parseOos(m){
+  const lines = String(m.content || '').split('\n').map(s => s.trim()).filter(Boolean);
+  const buyerLine = lines.find(l => l.startsWith('จัดซื้อ:')); if(!buyerLine || lines.length < 3) return null;
+  const whs = lines.filter(l => /^คลัง\s/.test(l)).map(l => {
+    const mm = l.match(/^คลัง\s*([^:]+):\s*(.*)$/) || []; const st = mm[2] || '';
+    const days = st.match(/เหลือขาย\s*~?\s*<?\s*([\d.]+)\s*วัน/);
+    return { wh:(mm[1] || '').trim(), zero:/ของหมดแล้ว/.test(st), days:days ? Number(days[1]) : null };
+  });
+  const bm = buyerLine.replace(/^จัดซื้อ:\s*/, '').match(/^([^(]+?)\s*(?:\((.*)\))?$/) || [];
+  return { id:m.id, chat_id:m.chat_id, sent_at:m.sent_at, _s:Date.parse(m.sent_at), item:lines[1],
+           whs, wh:whs.map(w => w.wh).join(', '), zero:whs.some(w => w.zero),
+           buyer:(bm[1] || '').trim() || '—', buyerFull:(bm[2] || '').trim(),
+           by:(lines.find(l => l.startsWith('แจ้งโดย:')) || '').replace(/^แจ้งโดย:\s*/, '') };
+}
+// เวลาตอบรับในกลุ่ม: งานรอตอบของแชทนั้นที่ครอบข้อความแจ้ง → ตอบแล้ว = นับถึงคำตอบแรก · ยังเปิด = รออยู่
+function oosAck(a){
+  const w = (dash.data.waits || []).find(w => w.chat_id === a.chat_id && Date.parse(w.started_at) <= a._s + 1000 && (!w.closed_at || Date.parse(w.closed_at) >= a._s));
+  if(!w) return { st:'none' };
+  if(!w.closed_at) return { st:'open' };
+  return w.closed_reason === 'answered' ? { st:'ok', sec:elapsedSec(a.sent_at, w.closed_at) } : { st:'none' };
+}
+function visibleOos(){
+  const rows = dash.data.oos || [];
+  if(dash.person === 'all' || dash.person === 'none') return rows;
+  const nm = memberName(dash.person); return rows.filter(a => a.buyer === nm);
+}
+function renderOos(){
+  const card = $('oosCard'); if(!card) return;
+  const rows = visibleOos(); card.hidden = !(dash.data.oos || []).length;
+  if(card.hidden) return;
+  $('oosCount').textContent = `${nf(rows.length)} ครั้ง`;
+  const cnt = new Map(); rows.forEach(a => cnt.set(a.item, (cnt.get(a.item) || 0) + 1));
+  const by = new Map();
+  rows.forEach(a => {
+    const r = by.get(a.buyer) || { buyer:a.buyer, full:a.buyerFull, n:0, zero:0, items:new Set(), acks:[], open:0 };
+    r.n++; if(a.zero) r.zero++; r.items.add(a.item);
+    const k = oosAck(a); if(k.st === 'ok') r.acks.push(k.sec); else if(k.st === 'open') r.open++;
+    by.set(a.buyer, r);
+  });
+  const buyers = [...by.values()].sort((a, b) => b.n - a.n || b.zero - a.zero);
+  const zeroAll = rows.filter(a => a.zero).length, repeat = [...cnt.values()].filter(n => n > 1).length;
+  const tiles = `<div class="stat-grid" style="margin-bottom:12px">${[
+    tile('ถูกแจ้ง', nf(rows.length), `${nf(cnt.size)} สินค้า`),
+    tile('หมดแล้วตอนแจ้ง', pct(zeroAll, rows.length), `${nf(zeroAll)} ครั้ง (สต็อก 0)`, zeroAll ? 'lv-warn' : ''),
+    tile('สินค้าที่ถูกแจ้งซ้ำ', nf(repeat), repeat ? 'มากกว่า 1 ครั้งในช่วงนี้' : 'ไม่มี'),
+  ].join('')}</div>`;
+  const ackTxt = r => { const s = r.acks.slice().sort((x, y) => x - y); return (s.length ? fmtDur(quantile(s, .5)) : '—') + (r.open ? ` · รออยู่ ${nf(r.open)}` : ''); };
+  const buyerTbl = `<div class="tbl-wrap"><table class="tbl compact"><thead><tr>${['จัดซื้อ', 'ถูกแจ้ง', 'หมดแล้ว', 'สินค้า', 'แจ้งซ้ำ', 'ตอบรับในกลุ่ม (มัธยฐาน)'].map((h, i) => `<th class="${i ? 'num' : ''}" style="cursor:default">${h}</th>`).join('')}</tr></thead><tbody>${
+    buyers.map(r => `<tr><td title="${esc(r.full)}">${esc(r.buyer)}</td><td class="num">${nf(r.n)}</td><td class="num">${nf(r.zero)} <span class="txt-muted">(${pct(r.zero, r.n)})</span></td><td class="num">${nf(r.items.size)}</td><td class="num">${nf([...r.items].filter(i => cnt.get(i) > 1).length)}</td><td class="num">${ackTxt(r)}</td></tr>`).join('')
+    || `<tr class="empty-row"><td colspan="6">ไม่มีข้อมูล</td></tr>`}</tbody></table></div>`;
+  const items = [...cnt.entries()].map(([item, n]) => {
+    const rs = rows.filter(a => a.item === item), last = rs[rs.length - 1];
+    return { item, n, zero:rs.filter(a => a.zero).length, buyer:last.buyer, wh:[...new Set(rs.flatMap(a => a.whs.map(w => w.wh)))].join(', '), last };
+  }).sort((a, b) => b.n - a.n || b.zero - a.zero || b.last._s - a.last._s).slice(0, 20);
+  const itemTbl = `<div class="tbl-wrap"><table class="tbl compact"><thead><tr>${['สินค้า', 'จัดซื้อ', 'คลัง', 'ถูกแจ้ง', 'หมดแล้ว', 'แจ้งล่าสุด'].map((h, i) => `<th class="${i >= 3 && i <= 4 ? 'num' : ''}" style="cursor:default">${h}</th>`).join('')}</tr></thead><tbody>${
+    items.map(r => `<tr class="clickable" onclick="openChatFromDash('${r.last.chat_id}')" title="เปิดแชท"><td>${esc(r.item)}</td><td>${esc(r.buyer)}</td><td>${esc(r.wh)}</td><td class="num">${nf(r.n)}</td><td class="num">${nf(r.zero)}</td><td>${thDateTime(r.last.sent_at)}</td></tr>`).join('')
+    || `<tr class="empty-row"><td colspan="6">ไม่มีข้อมูล</td></tr>`}</tbody></table></div>`;
+  $('oosBody').innerHTML = `${tiles}<h4 class="txt-sm" style="margin:4px 0 6px">แยกตามจัดซื้อ</h4>${buyerTbl}
+    <h4 class="txt-sm" style="margin:14px 0 6px">สินค้าที่ถูกแจ้งบ่อยสุด${cnt.size > 20 ? ' (20 อันดับแรก · ทั้งหมดอยู่ใน Excel)' : ''}</h4>${itemTbl}`;
+}
+
 // ── Excel ──
 function exportDashExcel(){
   if(!dashLoadedOnce){ showToast('ยังไม่มีข้อมูล', 'warning'); return; }
@@ -5305,6 +5382,10 @@ function exportDashExcel(){
   XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(waits), 'ข้อความที่ทักเข้ามา');
   const { buckets } = dayBuckets(inR, from, to);
   XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(buckets.map(b => ({ 'วันที่':b.full, 'ทันเวลา':b.ok, 'ช้ากว่า SLA':b.late, 'ยังไม่ตอบ':b.open, 'ไม่ต้องตอบ':b.dis, 'รวม':b.ok + b.late + b.open + b.dis }))), 'รายวัน');
+  const oosRows = visibleOos();
+  if(oosRows.length) XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(oosRows.map(a => { const k = oosAck(a); return { 'วันที่':thDate(a.sent_at), 'เวลา':thTime(a.sent_at), 'สินค้า':a.item, 'คลัง':a.wh,
+    'หมดแล้ว':a.zero ? 'ใช่' : '', 'เหลือขาย (วัน)':a.whs.map(w => w.days).filter(d => d != null).join(', '), 'จัดซื้อ':a.buyer, 'จัดซื้อ (ชื่อเต็ม)':a.buyerFull, 'แจ้งโดย':a.by,
+    'ตอบรับในกลุ่ม (นาที)':k.st === 'ok' ? Math.round(k.sec / 60) : k.st === 'open' ? 'ยังไม่ตอบ' : '' }; })), 'สินค้าขาด');
   const meta = [{ 'รายการ':'ช่วงเวลา', 'ค่า':`${thDate(from)} – ${thDate(addDays(to, -1))}` }, { 'รายการ':'นาฬิกา', 'ค่า':clockMode === 'biz' ? `เวลาทำการ ${settings.work_start}–${settings.work_end}` : '24 ชม.' }, { 'รายการ':'SLA (นาที)', 'ค่า':sla / 60 }, { 'รายการ':'ส่งออกเมื่อ', 'ค่า':thDateTime(new Date()) }, { 'รายการ':'โดย', 'ค่า':me?.email || '' }];
   XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(meta), 'เงื่อนไข');
   XLSX.writeFile(wb, `Rattana One Chat - รายงานการตอบแชท ${thDate(from).replace(/\//g, '')}-${thDate(addDays(to, -1)).replace(/\//g, '')}.xlsx`);
@@ -5940,8 +6021,10 @@ function staffSyncLine(){
   if(!(ssInfo?.rules || []).length && !last) return '';
   const accName = id => accounts.find(a => a.id === +id)?.name || ('บัญชี ' + id);
   const added = (last?.added_list || []).map(x => `${esc(x.nick)} → ${esc(accName(x.account))}`).join(' · ');
-  return `<div class="mini" id="ssLine" style="padding:0 16px 10px;line-height:1.7">🔄 เพิ่มสมาชิกอัตโนมัติจากทะเบียนพนักงาน ทุกวัน 05:50 (เพิ่มอย่างเดียว · คนที่ลบ/ถอดสิทธิ์แล้วไม่เพิ่มกลับ) ·
-    ${last ? `ล่าสุด ${thDateTime(last.at)} · เพิ่มใหม่ <b>${nf(last.added || 0)}</b>${added ? ` (${added})` : ''}` : 'ยังไม่เคยซิงก์'}
+  // v2.55 ซิงก์แก้ตามชีท: เปลี่ยนอีเมล (จับคู่ด้วยชื่อ-สกุล) · ชื่อเล่น · ชื่อ-สกุล
+  const changed = (last?.changed || []).map(x => `${esc(x.nick)}: ${esc(x.what)} ${esc(x.from || '–')} → ${esc(x.to)}`).join(' · ');
+  return `<div class="mini" id="ssLine" style="padding:0 16px 10px;line-height:1.7">🔄 ซิงก์สมาชิกจากทะเบียนพนักงาน ทุก 5 นาที (เพิ่มคนใหม่ · แก้อีเมล/ชื่อเล่น/ชื่อ-สกุลตามชีท · ไม่ถอดสิทธิ์ใครเอง · คนที่ลบ/ถอดสิทธิ์แล้วไม่เพิ่มกลับ) ·
+    ${last ? `${last.checked ? `ตรวจล่าสุด ${thDateTime(last.checked)} · ` : ''}เปลี่ยนแปลงล่าสุด ${thDateTime(last.at)} · เพิ่มใหม่ <b>${nf(last.added || 0)}</b>${added ? ` (${added})` : ''}${last.changed ? ` · แก้ตามชีท <b>${nf(last.changed.length)}</b>${changed ? ` (${changed})` : ''}` : ''}` : 'ยังไม่เคยซิงก์'}
     <button class="btn btn-outline btn-sm" style="margin-left:6px" onclick="runStaffSync()">ซิงก์เดี๋ยวนี้</button></div>`;
 }
 function refreshStaffSyncCard(){ const el = $('accessCard'); if(el) el.outerHTML = accessCardHtml(); }
@@ -6945,7 +7028,16 @@ function demoDash(){
   const [from, to] = currentRange(); const agg = new Map();
   demoWaits.forEach(w => { if(w.closed_reason !== 'answered' || !w.closed_by) return; const s = Date.parse(w.started_at); if(s < from || s >= to) return; const k = w.closed_by + '|' + w.answer_via + '|' + (w.chat_kind || 'group'); agg.set(k, (agg.get(k) || 0) + 1 + (Math.random() < .6 ? 1 : 0)); });
   // มี kind ด้วย — ให้ตัวกรอง "กลุ่ม / 1:1" ของการ์ด "ข้อความที่ทีมส่ง" ทำงานในโหมดตัวอย่างเหมือนของจริง
-  return { mentions:demoMentions.filter(x => x.account_id === acct.id), waits:demoWaits.map(withOwner), replies:[...agg.entries()].map(([k, n]) => { const [e, v, kd] = k.split('|'); return { staff_email:e, via:v, kind:kd, replies:n }; }) };
+  // ข้อความแจ้งสินค้าขาดสมมติ (เฉพาะบัญชีจัดซื้อ) — การ์ด "สินค้าขาด"
+  const oosItems = [['มาม่าต้มยำกุ้ง55ก.', 'อ้อย', 'W4'], ['มิตรผล น้ำตาลทรายขาว 1กก.', 'อ้อย', 'W1'], ['โอโม ผงซักฟอก 250ก.', 'ป่าน', 'W1'], ['กุ้งแดง น้ำปลาผสม 700มล.', 'บุ๊ค', 'W1'], ['ไดโนพาร์ค ซีฟู้ด 10ก.', 'อ้อย', 'W1']];
+  const oos = acct.id !== 1 ? [] : Array.from({ length:14 }, (_, i) => { const [it, b, wh] = oosItems[i % oosItems.length], z = i % 3 === 0;
+    return parseOos({ id:'oos' + i, chat_id:demoWaits[i % demoWaits.length]?.chat_id, sent_at:new Date(Date.now() - (i * 9 + 2) * 3600e3).toISOString(),
+      content:`ของใกล้หมด ยังไม่มีสั่งเข้า
+${it}
+คลัง ${wh}: ${z ? 'ของหมดแล้ว (สต็อก 0 ชิ้น · ขาย 0 ชิ้น/วัน)' : 'เหลือขาย ~3 วัน (สต็อก 12 ลัง · ขาย 4 ลัง/วัน)'}
+จัดซื้อ: ${b} (ชื่อสมมติ)
+แจ้งโดย: พนักงานสาขา` }); });
+  return { oos, mentions:demoMentions.filter(x => x.account_id === acct.id), waits:demoWaits.map(withOwner), replies:[...agg.entries()].map(([k, n]) => { const [e, v, kd] = k.split('|'); return { staff_email:e, via:v, kind:kd, replies:n }; }) };
 }
 
 // ── เริ่มทำงาน (ต้องอยู่ท้ายสุด หลังประกาศตัวแปรทั้งหมด) ──
