@@ -9,10 +9,10 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.55">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.56">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.55">
-<title>Rattana One Chat v2.55</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.56">
+<title>Rattana One Chat v2.56</title>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
@@ -175,12 +175,14 @@ body.dark .bni .nbadge{border-color:#1a2744}
 .tag.none{border-style:dashed}
 .tag.wait{background:rgba(250,178,25,.18);border-color:rgba(250,178,25,.5);color:var(--text)}
 .tag.lbl{background:rgba(46,110,201,.12);border-color:rgba(46,110,201,.4);color:#1f5aa8}
+.tag.lbl.mine{background:rgba(201,150,30,.13);border-color:rgba(201,150,30,.45);color:#8a6410}   /* v2.56 ป้ายของฉัน */
 /* v2.28 งานโดนแท็ก — ของฉันเป็นสีทึบให้เห็นก่อน · เกิน SLA = แดง */
 .tag.ment{background:rgba(46,110,201,.1);border-color:rgba(46,110,201,.45);color:#1f5aa8;font-weight:700}
 .tag.ment.me{background:#1f5aa8;border-color:#1f5aa8;color:#fff}
 .tag.ment.over{background:var(--st-crit);border-color:var(--st-crit);color:#fff}
 body.dark .tag.ment:not(.me):not(.over){background:rgba(110,160,240,.16);border-color:rgba(110,160,240,.45);color:#9cc2ff}
 body.dark .tag.lbl{background:rgba(110,160,240,.16);border-color:rgba(110,160,240,.45);color:#9cc2ff}
+body.dark .tag.lbl.mine{background:rgba(240,190,80,.15);border-color:rgba(240,190,80,.45);color:#f0c869}
 .chips.has-tags{border-bottom:0;padding-bottom:5px}
 .tagchips{padding-top:0;padding-bottom:8px;gap:5px;align-items:center}
 .tagchips .lb{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;color:var(--muted);flex-shrink:0;margin-right:2px}
@@ -1142,7 +1144,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.55 · 02/11/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.56 · 07/11/2569</div>
   </div>
 </div>
 
@@ -1192,7 +1194,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.55</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.56</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1481,7 +1483,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.55 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.56 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1538,6 +1540,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.53 (29/10/2569): แชท Facebook Messenger (pur-fb) — ป้าย f · หัวแชท Facebook Messenger · เตือนเกิน 24 ชม. · ปิดสติกเกอร์ LINE · ไม่อยู่ในบรอดแคสต์ · ตอบกลับแบบอ้างข้อความไม่ได้
 //  v2.54 (29/10/2569): แชท Facebook ใช้จุด f สีฟ้าที่มุมรูป (เดิมขึ้น L ทุกแชท) · ป้ายประวัติ "นำเข้าจาก Facebook"
 //  v2.55 (02/11/2569): แดชบอร์ด การ์ด "สินค้าขาด (จากข้อความแจ้ง)" — นับข้อความ "ของใกล้หมด ยังไม่มีสั่งเข้า" แยกตามจัดซื้อ/สินค้า/คลัง + Excel · ซิงก์ทะเบียนพนักงานทุก 5 นาที แก้อีเมล/ชื่อตามชีท (pur-staff-sync-v2.sql) แสดงสิ่งที่แก้ในหน้าสิทธิ์
+//  v2.56 (07/11/2569): ข้อความตอบกลับอัตโนมัติของ OA (bizId "__AUTO_RESPONSE") ขึ้นป้าย "ระบบตอบกลับอัตโนมัติ (OA)" ไม่ใช่ "แอดมิน OA" — ฐานข้อมูลไม่นับว่าตอบ/ไม่ล้างยังไม่อ่าน (pur-auto-response.sql) · ⭐ ป้ายของฉัน ป้ายสถานะแชทส่วนตัว เห็นคนเดียว (pur-my-tags.sql)
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1632,6 +1635,11 @@ let activeId = null, listFilter = 'all', searchQ = '', view = 'chat', quoting = 
 let listWh = '';                    // v2.29 กรองตามป้ายคลังส่ง ('' = ไม่กรอง)
 const mentPopSeen = new Set();       // v2.29 ป้ายเด้ง "โดนแท็ก" เล่นท่าเข้าครั้งเดียวต่องาน (รายการถูกวาดใหม่บ่อย)
 let listTag = '';                   // v2.23 กรองตามป้ายสถานะแชท ('' = ไม่กรอง)
+// v2.56 ป้ายของฉัน (pur-my-tags.sql) — แต่ละคนตั้งชุดป้ายเอง ติดแชทแล้วเห็นคนเดียว · ป้ายทีม (settings.chat_tags) ใช้ร่วมกันเหมือนเดิม
+let myTags = [], myChatTags = new Map();
+const tagPal = () => { const team = settings?.chat_tags || []; return [...team, ...myTags.filter(t => !team.includes(t))]; };
+const isMyTag = t => !(settings?.chat_tags || []).includes(t) && myTags.includes(t);
+const chatTagsOf = c => { const team = c?.tags || []; return [...team, ...(myChatTags.get(c?.id) || []).filter(t => !team.includes(t))]; };
 const LS = { get(k){ try{ return localStorage.getItem(k); }catch(_){ return null; } }, set(k, v){ try{ localStorage.setItem(k, v); }catch(_){} } };
 let clockMode = LS.get('pur.clock') || 'biz';          // biz = เวลาทำการ · raw = 24 ชม.
 // ค่าตั้งแจ้งเตือนอยู่ในบล็อก "การแจ้งเตือน" ด้านล่าง (notiPrefs)
@@ -1809,7 +1817,21 @@ async function loadMembers(){
   members = new Map((data || []).map(r => [r.email, r]));
 }
 async function loadPeople(){ const rows = await fetchAll('pur_people', q => q.order('last_seen_at', { ascending:false })); people = new Map(rows.map(r => [r.line_user_id, r])); }
-async function loadSettings(){ const aid = acct.id; const { data, error } = await sb.from('pur_settings').select('*').eq('id', aid).maybeSingle(); if(error) throw new Error(error.message); if(acct?.id !== aid) return; applySettings(data); }   // v2.45 สลับบัญชีระหว่างรอ = ทิ้งผล
+async function loadSettings(){ const aid = acct.id; const { data, error } = await sb.from('pur_settings').select('*').eq('id', aid).maybeSingle(); if(error) throw new Error(error.message); if(acct?.id !== aid) return; applySettings(data); loadMyTags(); }
+// v2.56 ป้ายของฉัน: ชุดป้าย + ป้ายที่ติดแชทของบัญชีนี้ (RLS ให้เห็นแค่ของตัวเอง) · โหลดไม่ได้ (ยังไม่รัน SQL) = ไม่มีป้ายของฉัน แอพทำงานต่อ
+async function loadMyTags(){
+  const aid = acct.id;
+  if(DEMO){ try{ myTags = JSON.parse(LS.get('pur.demoMyTags') || '["ตามต่อพรุ่งนี้"]'); }catch(_){ myTags = []; } renderTagChips(); return; }
+  try{
+    const [p, t] = await Promise.all([
+      sb.from('pur_my_tags').select('palette').eq('account_id', aid).maybeSingle(),
+      sb.from('pur_chat_my_tags').select('chat_id, tags')]);
+    if(p.error || t.error) throw new Error((p.error || t.error).message);
+    if(acct?.id !== aid) return;
+    myTags = p.data?.palette || []; myChatTags = new Map((t.data || []).map(r => [r.chat_id, r.tags || []]));
+  }catch(e){ console.warn('my tags:', e.message); myTags = []; myChatTags = new Map(); }
+  renderTagChips(); renderList(); if(activeId && chatById.get(activeId)) renderChatHeader(chatById.get(activeId));
+}   // v2.45 สลับบัญชีระหว่างรอ = ทิ้งผล
 async function loadChats(){
   // ถ้ามีเหตุการณ์ realtime ค้างรอวาดอยู่ (schedulePaint 250ms) ให้ใช้ภาพ "ก่อนเหตุการณ์" ของมัน
   // ไม่งั้นภาพที่ถ่ายตรงนี้มีข้อความใหม่อยู่แล้ว + บรรทัดล้าง paintSnap ข้างล่าง = การแจ้งเตือนของข้อความนั้นหาย
@@ -1989,9 +2011,9 @@ function filteredChats(){
       case 'user':       if(!open || c.kind !== 'user') return false; break;
       case 'resolved':   if(open) return false; break;
     }
-    if(listTag && !(c.tags || []).includes(listTag)) return false;
+    if(listTag && !chatTagsOf(c).includes(listTag)) return false;
     if(listWh && c.wh_tag !== listWh) return false;
-    if(q){ const hay = [c.supplier_name, c.title, c.last_message, c.note, c.assignee_email && memberName(c.assignee_email), ...(c.tags || []), c.wh_tag, c.cust_code].join(' ').toLowerCase(); if(!hay.includes(q)) return false; }
+    if(q){ const hay = [c.supplier_name, c.title, c.last_message, c.note, c.assignee_email && memberName(c.assignee_email), ...chatTagsOf(c), c.wh_tag, c.cust_code].join(' ').toLowerCase(); if(!hay.includes(q)) return false; }
     return true;
   }).sort((a, b) => {
     const recent = (Date.parse(b.last_message_at || 0) || 0) - (Date.parse(a.last_message_at || 0) || 0);
@@ -2168,7 +2190,7 @@ function renderList(){
       tags.push(`<span class="tag ment ${mine ? 'me' : ''} ${o ? 'over' : ''}" title="${esc(x.b ? x.b + ' แท็ก' : 'โดนแท็ก')} — รอคำตอบจาก ${esc(memberName(x.e))}">@ ${mine ? 'แท็กถึงคุณ' : esc(memberName(x.e))} · รอ ${fmtDur(a)}${o ? ' · เกิน SLA' : ''}</span>`); });
     if(!c.is_active) tags.push(`<span class="tag off">${c.kind === 'user' ? 'ถูกบล็อก' : 'ไม่อยู่ในกลุ่ม'}</span>`);
     if(c.status === 'resolved') tags.push(`<span class="tag done">✓ เสร็จแล้ว</span>`);
-    (c.tags || []).forEach(t => tags.push(`<span class="tag lbl">🏷 ${esc(t)}</span>`));
+    chatTagsOf(c).forEach(t => tags.push(isMyTag(t) ? `<span class="tag lbl mine" title="ป้ายของฉัน (คนอื่นไม่เห็น)">⭐ ${esc(t)}</span>` : `<span class="tag lbl">🏷 ${esc(t)}</span>`));
     return `<div class="${cls}" data-id="${c.id}" onclick="openChat('${c.id}')">
       <div class="av-wrap">${avatarHtml(c)}${isFbChat(c) ? '<div class="pdot fb" title="Facebook Messenger">f</div>' : '<div class="pdot">L</div>'}</div>
       <div class="conv-info">
@@ -2182,14 +2204,14 @@ function renderList(){
 // ── v2.23 ป้ายสถานะแชท: แถบกรองใต้ชิป (ซ่อนเมื่อบัญชีไม่มีป้าย) ──
 function renderTagChips(){
   const el = $('tagChips'); if(!el) return;
-  const pal = (settings && settings.chat_tags) || [];
+  const pal = tagPal();
   if(listTag && !pal.includes(listTag)) listTag = '';
   $('listChips')?.classList.toggle('has-tags', pal.length > 0);   // สองแถวเป็นกลุ่มเดียวกัน — ไม่มีเส้นคั่นกลาง
   if(!pal.length){ el.style.display = 'none'; el.innerHTML = ''; return; }
-  const cnt = t => chats.filter(c => c.status !== 'resolved' && (c.tags || []).includes(t)).length;
+  const cnt = t => chats.filter(c => c.status !== 'resolved' && chatTagsOf(c).includes(t)).length;
   el.style.display = '';
   el.innerHTML = `<span class="lb">${ic('tag')}ป้าย</span>` + pal.map(t => { const n = cnt(t);
-    return `<button class="tchip ${listTag === t ? 'active' : ''}" data-t="${esc(t)}" onclick="setListTag(this.dataset.t)" title="แสดงเฉพาะแชทที่ติดป้าย ${esc(t)}${listTag === t ? ' (กดอีกครั้งเพื่อยกเลิก)' : ''}">${esc(t)}${n ? `<span class="n">${nf(n)}</span>` : ''}</button>`; }).join('');
+    return `<button class="tchip ${listTag === t ? 'active' : ''}" data-t="${esc(t)}" onclick="setListTag(this.dataset.t)" title="แสดงเฉพาะแชทที่ติดป้าย ${esc(t)}${isMyTag(t) ? ' (ป้ายของฉัน)' : ''}${listTag === t ? ' (กดอีกครั้งเพื่อยกเลิก)' : ''}">${isMyTag(t) ? '⭐ ' : ''}${esc(t)}${n ? `<span class="n">${nf(n)}</span>` : ''}</button>`; }).join('');
 }
 function setListTag(t){ listTag = listTag === t ? '' : t; resetList(); renderList(); $('convList').scrollTop = 0; }
 // v2.29 ชิปคลังส่ง — มีเฉพาะบัญชีที่ตั้งชีทลูกค้าไว้ (แชทมี wh_tag) · เลขต่อคลัง = แชทที่ยังไม่เสร็จ
@@ -2342,8 +2364,8 @@ function renderTools(c){
     h += `<button class="tool-btn ${a ? 'gold' : ''}" onclick="openAssignee()">👤 ${a ? esc(memberName(a)) : 'ยังไม่มีผู้รับผิดชอบ'} ▾</button>`;
   if(!a) h += `<button class="tool-btn" onclick="claimChat()">✋ รับเรื่องเอง</button>`;
   h += `<button class="tool-btn ${c.status === 'resolved' ? 'done' : ''}" onclick="toggleResolve()">${c.status === 'resolved' ? '✓ เสร็จแล้ว · เปิดใหม่' : '✓ ทำเครื่องหมายเสร็จ'}</button>`;
-  const pal = settings?.chat_tags || [];
-  if(pal.length || (c.tags || []).length) h += `<button class="tool-btn" onclick="openTagMenu()" title="ป้ายสถานะแชท — ใช้กรองรายการแชท ไม่เกี่ยวกับสถิติ">🏷 ${(c.tags || []).length ? esc(c.tags.join(' · ')) : 'ติดป้าย'}</button>`;
+  const pal = tagPal(), ct = chatTagsOf(c);
+  h += `<button class="tool-btn" onclick="openTagMenu()" title="ป้ายสถานะแชท — ใช้กรองรายการแชท ไม่เกี่ยวกับสถิติ">🏷 ${ct.length ? esc(ct.map(t => (isMyTag(t) ? '⭐' : '') + t).join(' · ')) : 'ติดป้าย'}</button>`;   // v2.56 แสดงเสมอ — ตั้งป้ายของฉันได้จากเมนูนี้
   h += `<button class="tool-btn" onclick="markUnread()" title="เผลอเปิดอ่าน? ให้แชทนี้กลับไปขึ้นตัวหนาเหมือนยังไม่ได้อ่าน">● ยังไม่อ่าน</button>`;
   if(c.awaiting_since && !c.exclude_kpi) h += `<button class="tool-btn danger" onclick="dismissWait()" title="ปิดงานรอตอบโดยไม่ตอบ เช่น ข้อความไม่เกี่ยวกับเรา">🚫 ไม่ต้องตอบ</button>`;
   if(isSup()) h += `<span class="tool-sp"></span><button class="tool-btn ${c.exclude_kpi ? 'danger' : ''}" onclick="toggleExclude()" title="แชททดสอบ/แชทภายใน ไม่ควรนับสถิติ">${c.exclude_kpi ? '📵 ไม่นับสถิติ' : '📊 นับสถิติ'}</button>`;
@@ -2450,8 +2472,11 @@ const SYS_CARDS = {
   rpbsale:  { who:'ระบบ ROO', alts:[/^ขออนุญาตสรุปรายละเอียดสินค้าเพิ่มเติม/, /^🧾 สรุปคำสั่งซื้อ/, /^🛍️? ?ลืมกดยืนยันออเดอร์/] },
   purchase: { who:'ระบบใบสั่งซื้อ', alts:[/^ใบสั่งซื้อ$/, /^ใบสั่งสินค้า$/, /^หนังสือขอสนับสนุน/] },   // ของก่อน 18/09 (ก่อนชีทส่งการ์ดเข้าแอพ)
 };
+// v2.56 OA Manager ส่ง bizId "__AUTO_RESPONSE" สำหรับข้อความตอบกลับอัตโนมัติ (pur_is_auto_msg นับเป็นระบบ: ไม่ปิดงาน ไม่ล้างเลขยังไม่อ่าน)
+const isOaAuto = m => m?.direction === 'out' && !m.staff_email && String(m.sender_biz_id || '').startsWith('__');
 function sysCardOf(m){
   if(!m || m.direction !== 'out' || m.via !== 'oa' || m.msg_type !== 'text' || m.card) return null;
+  if(isOaAuto(m)) return 'ระบบตอบกลับอัตโนมัติ (OA)';   // v2.56 ข้อความนอกเวลาทำการ/ทักทาย — ไม่ใช่แอดมินตอบ
   if(m.staff_email || m.sender_name || m.sender_biz_id) return null;
   const s = SYS_CARDS[acct?.slug]; if(!s) return null;
   const t = String(m.content || '').trim();
@@ -2474,7 +2499,7 @@ function bubbleBody(m){
   const c = m.content || '';
   const sc = sysCardOf(m);
   // v2.46 ข้อความยาว/หลายบรรทัด = ระบบส่งเป็นข้อความธรรมดา แอพได้เนื้อหาครบแล้ว → ไม่ขึ้น "ไม่ได้รับเนื้อการ์ด"
-  if(sc) return c.length > 200 || c.includes('\n')
+  if(sc) return c.length > 200 || c.includes('\n') || isOaAuto(m)
     ? [`<div class="sc-head">📋 ข้อความจาก${esc(sc)}</div><div>${linkify(esc(c))}</div>`, false]
     : [`<div class="sc-head">📋 การ์ดจาก${esc(sc)}</div><div>${esc(c)}</div><div class="sc-note">แอพไม่ได้รับเนื้อการ์ด — ดูรายละเอียดใน LINE</div>`, false];
   switch(m.msg_type){
@@ -3574,19 +3599,43 @@ async function toggleExclude(){
 // v2.23 ติด/ถอดป้ายสถานะแชท — ทุกคนในบัญชีทำได้ · ชุดป้ายหัวหน้าตั้งในหน้าตั้งค่า
 function openTagMenu(){
   const c = chatById.get(activeId); if(!c) return;
-  const pal = settings?.chat_tags || [], cur = new Set(c.tags || []);
-  const all = [...pal, ...[...cur].filter(t => !pal.includes(t))];
+  const team = settings?.chat_tags || [], cur = new Set(chatTagsOf(c));
+  const teamAll = [...team, ...(c.tags || []).filter(t => !team.includes(t))];
+  const mine = myTags.filter(t => !team.includes(t));
+  const pick = (list, kind) => list.map(t => `<label class="${cur.has(t) ? 'on' : ''}"><input type="checkbox" data-k="${kind}" value="${esc(t)}" ${cur.has(t) ? 'checked' : ''} onchange="this.parentElement.classList.toggle('on',this.checked)"> ${kind === 'me' ? '⭐ ' : ''}${esc(t)}</label>`).join('');
   openModal('🏷 ป้ายสถานะแชท', `
     <div class="txt-sm txt-muted mb-12">เลือกได้หลายป้าย · ใช้กรองรายการแชท (แถบ "🏷 ป้าย" ใต้ตัวกรอง) · ไม่เกี่ยวกับสถิติ/งานรอตอบ</div>
-    ${all.length ? `<div class="tagpick" id="tagPick">${all.map(t => `<label class="${cur.has(t) ? 'on' : ''}"><input type="checkbox" value="${esc(t)}" ${cur.has(t) ? 'checked' : ''} onchange="this.parentElement.classList.toggle('on',this.checked)"> ${esc(t)}</label>`).join('')}</div>`
-      : '<div class="txt-sm">บัญชีนี้ยังไม่มีป้าย — หัวหน้าเพิ่มได้ที่ ตั้งค่า › ป้ายสถานะแชท</div>'}`,
-    `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button>${all.length ? '<button class="btn btn-gold" onclick="saveChatTags()">บันทึก</button>' : ''}`);
+    <div class="txt-sm mb-8"><b>ป้ายทีม</b> <span class="txt-muted">— ทุกคนในทีมเห็น</span></div>
+    ${teamAll.length ? `<div class="tagpick" id="tagPick">${pick(teamAll, 'team')}</div>` : '<div class="txt-sm txt-muted">บัญชีนี้ยังไม่มีป้ายทีม — เพิ่มได้ที่ ตั้งค่า › ป้ายสถานะแชท</div>'}
+    <div class="txt-sm mb-8 mt-12"><b>⭐ ป้ายของฉัน</b> <span class="txt-muted">— เห็นคนเดียว ตั้งชุดป้ายเองได้</span></div>
+    ${mine.length ? `<div class="tagpick" id="tagPickMe">${pick(mine, 'me')}</div>` : ''}
+    <div class="row mt-8" style="gap:6px"><input class="input" id="myTagNew" maxlength="20" placeholder="เพิ่มป้ายของฉัน เช่น ตามต่อพรุ่งนี้" onkeydown="if(event.key==='Enter'){event.preventDefault();addMyTagFromMenu()}" style="flex:1"><button class="btn btn-outline btn-sm" onclick="addMyTagFromMenu()">+ เพิ่ม</button></div>`,
+    `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button><button class="btn btn-gold" onclick="saveChatTags()">บันทึก</button>`);
+}
+// v2.56 เพิ่มป้ายใหม่เข้าชุดของฉันจากหน้าต่างติดป้าย (ติ๊กให้แชทนี้ไว้เลย กดบันทึกเพื่อติด)
+async function addMyTagFromMenu(){
+  const inp = $('myTagNew'), t = (inp?.value || '').trim().slice(0, 20); if(!t) return;
+  if((settings?.chat_tags || []).includes(t)){ showToast('มีป้ายทีมชื่อนี้แล้ว — ติ๊กที่ป้ายทีมได้เลย', 'info'); return; }
+  if(myTags.length >= 12 && !myTags.includes(t)){ showToast('ป้ายของฉันได้สูงสุด 12 ป้าย — ลบบางป้ายในหน้าตั้งค่าก่อน', 'warning'); return; }
+  const keep = [...document.querySelectorAll('#modalBody input[type=checkbox]:checked')].map(i => i.value);
+  if(!myTags.includes(t)){ const ok = await saveMyTagList([...myTags, t], true); if(!ok) return; }
+  openTagMenu();
+  document.querySelectorAll('#modalBody input[type=checkbox]').forEach(i => { if(keep.includes(i.value) || i.value === t){ i.checked = true; i.parentElement.classList.add('on'); } });
 }
 async function saveChatTags(){
-  const id = activeId, tags = [...document.querySelectorAll('#tagPick input:checked')].map(i => i.value); closeModal();
-  if(DEMO){ patchChat(id, { tags }); showToast('ติดป้ายแล้ว (โหมดตัวอย่าง)', 'success'); return; }
-  try{ const saved = await rpc('pur_set_chat_tags', { p_chat:id, p_tags:tags }); patchChat(id, { tags:saved || [] }); showToast((saved || []).length ? 'ติดป้ายแล้ว ✓' : 'ถอดป้ายแล้ว ✓', 'success'); }
-  catch(e){ if(e.message !== 'demo') showToast(e.message, 'error'); }
+  const id = activeId, c = chatById.get(id); if(!c) return;
+  const sel = k => [...document.querySelectorAll(`#modalBody input[data-k="${k}"]:checked`)].map(i => i.value);
+  const team = sel('team'), mine = sel('me'); closeModal();
+  const same = (x, y) => x.length === y.length && x.every((t, i) => t === y[i]);
+  const teamChanged = !same(team, c.tags || []), mineChanged = !same(mine, myChatTags.get(id) || []);
+  if(!teamChanged && !mineChanged) return;
+  if(DEMO){ if(mineChanged) myChatTags.set(id, mine); patchChat(id, { tags:team }); renderTagChips(); showToast('บันทึกป้ายแล้ว (โหมดตัวอย่าง)', 'success'); return; }
+  try{
+    if(teamChanged){ const saved = await rpc('pur_set_chat_tags', { p_chat:id, p_tags:team }); c.tags = saved || []; }
+    if(mineChanged){ const saved = await rpc('pur_set_my_chat_tags', { p_chat:id, p_tags:mine }); if((saved || []).length) myChatTags.set(id, saved); else myChatTags.delete(id); }
+    patchChat(id, {}); renderTagChips();
+    showToast(chatTagsOf(chatById.get(id)).length ? 'ติดป้ายแล้ว ✓' : 'ถอดป้ายแล้ว ✓', 'success');
+  }catch(e){ if(e.message !== 'demo') showToast(e.message, 'error'); }
 }
 function openEditChat(){
   const c = chatById.get(activeId); if(!c) return;
@@ -5848,7 +5897,19 @@ function tagsCardHtml(){
   const t = settings.chat_tags || [];
   return `<div class="card card-gold"><div class="card-head"><h3>🏷 ป้ายสถานะแชท · ${esc(acctName())}</h3>
     <div class="hint">ป้ายที่ทีมติดให้แชทได้ เช่น รอของ / รอราคา / รอเอกสาร · ใช้ร่วมกันทั้งทีมของบัญชี ${esc(acctName())} (แก้ได้ทุกคนในทีม · บัญชีอื่นมีชุดของตัวเอง) · ใช้กรองรายการแชท ไม่เกี่ยวกับสถิติ · หนึ่งบรรทัดต่อป้าย (ไม่เกิน 12 ป้าย ป้ายละ 20 ตัวอักษร) · ลบป้ายออก = ถอดป้ายนั้นจากทุกแชท</div></div>
-    <div class="card-body"><textarea class="input" id="tagText" rows="5">${esc(t.join('\n'))}</textarea><div class="mt-8"><button class="btn btn-gold" onclick="saveTagPalette()">💾 บันทึก</button></div></div></div>`;
+    <div class="card-body"><textarea class="input" id="tagText" rows="5">${esc(t.join('\n'))}</textarea><div class="mt-8"><button class="btn btn-gold" onclick="saveTagPalette()">💾 บันทึก</button></div></div></div>
+  <div class="card card-gold"><div class="card-head"><h3>⭐ ป้ายของฉัน · ${esc(acctName())}</h3>
+    <div class="hint">ชุดป้ายส่วนตัว ตั้งชื่อตามสไตล์ตัวเองได้ เช่น ตามต่อพรุ่งนี้ / รอโทรกลับ · ติดแชทแล้ว<b>เห็นคนเดียว</b> คนอื่นในทีมไม่เห็น · ใช้กรองรายการแชทได้เหมือนป้ายทีม · หนึ่งบรรทัดต่อป้าย (ไม่เกิน 12 ป้าย ป้ายละ 20 ตัวอักษร) · ลบป้ายออก = ถอดป้ายนั้นจากแชทของคุณ</div></div>
+    <div class="card-body"><textarea class="input" id="myTagText" rows="4" placeholder="ตามต่อพรุ่งนี้&#10;รอโทรกลับ">${esc(myTags.join('\n'))}</textarea><div class="mt-8"><button class="btn btn-gold" onclick="saveMyTagList($('myTagText').value.split('\n'))">💾 บันทึก</button></div></div></div>`;
+}
+// v2.56 บันทึกชุดป้ายของฉัน (quiet = เรียกจากหน้าต่างติดป้าย ไม่ต้องขึ้นข้อความ)
+async function saveMyTagList(list, quiet){
+  const arr = [...new Set(list.map(x => String(x).trim().slice(0, 20)).filter(Boolean))].slice(0, 12);
+  const gone = myTags.filter(t => !arr.includes(t) && [...myChatTags.values()].some(v => v.includes(t)));
+  if(!quiet && gone.length && !confirm(`ลบป้าย "${gone.join('", "')}" = ถอดป้ายนี้ออกจากแชทของคุณด้วย ตกลงไหม?`)) return false;
+  if(DEMO){ myTags = arr; LS.set('pur.demoMyTags', JSON.stringify(arr)); [...myChatTags].forEach(([k, v]) => myChatTags.set(k, v.filter(t => arr.includes(t)))); renderTagChips(); renderList(); if(!quiet) showToast('บันทึกป้ายของฉันแล้ว (โหมดตัวอย่าง)', 'success'); return true; }
+  try{ await rpc('pur_save_my_tags', { p_account:acct.id, p_tags:arr }); await loadMyTags(); if(!quiet) showToast('บันทึกป้ายของฉันแล้ว ✓', 'success'); return true; }
+  catch(e){ if(e.message !== 'demo') showToast(e.message, 'error'); return false; }
 }
 // v2.29 ป้ายคลังส่งจากชีทลูกค้า (หัวหน้า) — ชื่อ LINE มีรหัสลูกค้า → ติดป้ายคลังตามชีท · ลิงก์ชีทเก็บฝั่งเซิร์ฟเวอร์ (pur_private)
 let whInfo = null, whInfoAcct = 0;
