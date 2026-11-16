@@ -9,10 +9,19 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.57">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.58">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.57">
-<title>Rattana One Chat v2.57</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.58">
+<title>Rattana One Chat v2.58</title>
+<script type="application/json" id="whatsNew">{"items":[
+["⏰","ตามคำสัญญาให้อัตโนมัติ","พิมพ์ \"เดี๋ยวเช็คให้นะคะ\" ระบบจำไว้ ถึงเวลาแล้วยังเงียบ = เตือนทันที"],
+["🔥","แชทด่วนขึ้นบนสุด","ลูกค้าเร่งหรือไม่พอใจ เห็นก่อนใคร"],
+["🏆","ตอบไวประจำสัปดาห์","ประกาศทุกวันศุกร์ พร้อมป้ายเท่ๆ ข้างชื่อ"],
+["🌅","สรุปเช้าเข้า LINE หัวหน้า","ทุกเช้า 08:00 ไม่ต้องเปิดแอพก็รู้ภาพรวม"],
+["🎙️","ถอดข้อความเสียง","ลูกค้าส่งเสียงมา อ่านเป็นตัวหนังสือได้เลย"],
+["📣","บรอดแคสต์เปิดในแอพ","ส่ง LINE หาหลายคนได้ ไม่ต้องสลับเว็บ"],
+["📖","ทัวร์สอนใช้","พาชมทีละจุด ดูซ้ำได้ที่ ตั้งค่า"]
+]}</script>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
@@ -123,6 +132,55 @@ body.dark .bni .nbadge{border-color:#1a2744}
 .view.active{display:flex}
 #viewChat{flex-direction:row}
 .scroll-view{flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+#viewSend{flex-direction:column}
+#viewSend .send-bar{display:flex;align-items:center;gap:6px;padding:6px 12px;font-size:13px;font-weight:600;border-bottom:1px solid var(--border);background:var(--card-bg);color:var(--text)}
+#viewSend .send-bar .sp{flex:1}
+#sendFrame{flex:1;width:100%;min-height:0;border:0;background:#fff}
+/* v2.58 ป๊อปอัปของใหม่ (ก่อน/หลังอัปเดต) */
+#wnOv{position:fixed;inset:0;z-index:9500;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,12,30,.55);animation:wnFade .25s ease;overflow:hidden}
+#wnOv .wn-card{position:relative;width:min(400px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--card-bg);color:var(--text);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.4);animation:wnPop .55s cubic-bezier(.2,1.4,.4,1)}
+#wnOv .wn-top{position:relative;padding:22px 20px 16px;text-align:center;background:linear-gradient(135deg,#0d1b3e,#243b73);color:#fff;border-radius:20px 20px 0 0;overflow:hidden}
+#wnOv .wn-ico{font-size:52px;line-height:1;display:inline-block;animation:wnBob 1.6s ease-in-out infinite}
+#wnOv .wn-ico.go{animation:wnRocket 1.4s ease-in-out infinite}
+#wnOv .wn-h{font-size:20px;font-weight:800;margin-top:8px}
+#wnOv .wn-sub{font-size:13px;opacity:.85;margin-top:4px}
+#wnOv .wn-ver{display:inline-block;margin-top:8px;padding:2px 10px;border-radius:999px;background:var(--gold);color:#0d1b3e;font-weight:800;font-size:12px}
+#wnOv .wn-list{padding:10px 16px 4px}
+#wnOv .wn-it{display:flex;gap:10px;align-items:flex-start;padding:9px 6px;border-radius:12px;opacity:0;animation:wnUp .45s ease forwards}
+#wnOv .wn-it:hover{background:rgba(201,168,76,.10)}
+#wnOv .wn-it .e{font-size:22px;width:30px;text-align:center;flex-shrink:0;animation:wnWiggle 2.4s ease-in-out infinite}
+#wnOv .wn-it b{display:block;font-size:14px}
+#wnOv .wn-it span{font-size:12.5px;color:var(--muted);line-height:1.5}
+#wnOv .wn-foot{display:flex;gap:8px;padding:12px 16px 16px}
+#wnOv .wn-foot .btn{flex:1;justify-content:center}
+#wnOv .wn-go{animation:wnPulse 1.8s ease-in-out infinite}
+#wnOv .cf{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;opacity:.9;animation:wnFall linear forwards;pointer-events:none}
+#wnOv .spark{position:absolute;font-size:14px;animation:wnTwinkle 1.8s ease-in-out infinite}
+@keyframes wnFade{from{opacity:0}to{opacity:1}}
+@keyframes wnPop{0%{transform:scale(.6) translateY(30px);opacity:0}100%{transform:none;opacity:1}}
+@keyframes wnBob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
+@keyframes wnRocket{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(4px,-10px) rotate(-8deg)}}
+@keyframes wnUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes wnWiggle{0%,86%,100%{transform:rotate(0)}90%{transform:rotate(-14deg) scale(1.15)}95%{transform:rotate(12deg) scale(1.15)}}
+@keyframes wnPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.55)}50%{box-shadow:0 0 0 9px rgba(201,168,76,0)}}
+@keyframes wnFall{to{transform:translateY(110vh) rotate(720deg)}}
+@keyframes wnTwinkle{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.2)}}
+@media (prefers-reduced-motion:reduce){#wnOv *{animation-duration:.01s!important;animation-iteration-count:1!important}}
+/* v2.58 สอนใช้ครั้งแรก (ทัวร์) */
+#tourOv{position:fixed;inset:0;z-index:9000}
+#tourOv .t-shade{position:absolute;inset:0;background:rgba(5,12,30,.55)}
+#tourOv .t-spot{position:absolute;border-radius:12px;box-shadow:0 0 0 9999px rgba(5,12,30,.55),0 0 0 3px var(--gold);transition:all .25s ease;pointer-events:none}
+#tourOv.has-spot .t-shade{background:transparent}
+#tourOv .t-card{position:absolute;width:min(340px,calc(100vw - 24px));background:var(--card-bg);color:var(--text);border-radius:14px;padding:16px 16px 12px;box-shadow:0 18px 50px rgba(0,0,0,.35);border-top:4px solid var(--gold);transition:top .25s ease,left .25s ease}
+#tourOv .t-step{font-size:11px;color:var(--muted);margin-bottom:4px}
+#tourOv .t-title{font-size:16px;font-weight:700;margin-bottom:6px}
+#tourOv .t-body{font-size:13.5px;line-height:1.65}
+#tourOv .t-body ul{margin:6px 0 0;padding-left:18px}
+#tourOv .t-foot{display:flex;align-items:center;gap:6px;margin-top:12px}
+#tourOv .t-foot .sp{flex:1}
+#tourOv .t-dots{display:flex;gap:4px;flex-wrap:wrap;max-width:120px}
+#tourOv .t-dots i{width:6px;height:6px;border-radius:50%;background:var(--border)}
+#tourOv .t-dots i.on{background:var(--gold)}
 .content{width:100%;max-width:1200px;margin:0 auto;padding:12px 12px 90px}
 @media(min-width:640px){.content{padding:16px 16px 90px}}
 @media(min-width:1024px){.content{padding:20px 20px 60px}}
@@ -175,6 +233,13 @@ body.dark .bni .nbadge{border-color:#1a2744}
 .tag.none{border-style:dashed}
 .tag.wait{background:rgba(250,178,25,.18);border-color:rgba(250,178,25,.5);color:var(--text)}
 .tag.lbl{background:rgba(46,110,201,.12);border-color:rgba(46,110,201,.4);color:#1f5aa8}
+.tag.hot{background:rgba(220,53,69,.12);border-color:rgba(220,53,69,.45);color:#c22d3b;font-weight:600}   /* v2.58 🔥/⏰ เลยเวลา */
+.tag.prom{background:rgba(46,110,201,.08);border-color:rgba(46,110,201,.35);color:#2b5fa8}
+body.dark .tag.hot{color:#ff8a94} body.dark .tag.prom{color:#9cc2ff}
+.tool-btn.prom{border-color:rgba(46,110,201,.45);color:#2b5fa8} .tool-btn.prom.late{border-color:rgba(220,53,69,.5);color:#c22d3b}
+.transcript{margin-top:6px;font-size:13px;line-height:1.55;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,.05);white-space:pre-wrap}
+body.dark .transcript{background:rgba(255,255,255,.07)}
+.champ{display:inline-block;margin-left:3px;font-size:.95em}
 .tag.lbl.mine{background:rgba(201,150,30,.13);border-color:rgba(201,150,30,.45);color:#8a6410}   /* v2.56 ป้ายของฉัน */
 /* v2.28 งานโดนแท็ก — ของฉันเป็นสีทึบให้เห็นก่อน · เกิน SLA = แดง */
 .tag.ment{background:rgba(46,110,201,.1);border-color:rgba(46,110,201,.45);color:#1f5aa8;font-weight:700}
@@ -921,7 +986,7 @@ select.input{appearance:auto}
   .app-hdr .hdr-wide{display:none}
   .app-hdr .noti-dot{border-color:#fff;top:-3px;right:-2px}
   body.dark .app-hdr .noti-dot{border-color:#1a2744}
-  .conv-list,.scroll-view{padding-bottom:var(--nav-space)}            /* เลื่อนรายการสุดท้ายพ้นแถบลอยได้ */
+  .conv-list,.scroll-view,#viewSend{padding-bottom:var(--nav-space)}            /* เลื่อนรายการสุดท้ายพ้นแถบลอยได้ */
   .reply-bar{padding-bottom:max(8px,env(safe-area-inset-bottom))}    /* เปิดแชท = แถบล่างหลบ ช่องพิมพ์ติดขอบจอจริง */
   .upd-bar{bottom:calc(var(--nav-h) + 20px + env(safe-area-inset-bottom))}
   body:has(.chat-pane.open) .upd-bar{bottom:calc(10px + env(safe-area-inset-bottom))}
@@ -1144,7 +1209,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.57 · 11/11/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.58 · 16/11/2569</div>
   </div>
 </div>
 
@@ -1194,7 +1259,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.57</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.58</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1210,6 +1275,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 </header>
 <div class="ctx-menu" id="hdrMore" role="menu">
   <button onclick="closeHdrMore();toggleDark()"><span data-ic="moon"></span> โหมดมืด / สว่าง</button>
+  <button onclick="closeHdrMore();startTour(true)">📖 วิธีใช้แอพ</button>
   <button onclick="closeHdrMore();doLogout()"><span data-ic="logout"></span> ออกจากระบบ</button>
 </div>
 
@@ -1217,7 +1283,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 <nav class="top-tabs">
   <button class="tab-btn active" data-v="chat" onclick="setView('chat')"><span data-ic="chat"></span>แชท <span class="nbadge" id="tb-chat"></span></button>
   <button class="tab-btn" data-v="dash" onclick="setView('dash')"><span data-ic="chart"></span>แดชบอร์ด</button>
-  <button class="tab-btn" data-v="blast" onclick="openBlastApp()" title="เปิดแอพ Rattana ส่ง LINE (แท็บใหม่)"><span data-ic="send"></span>บรอดแคสต์ ↗</button>
+  <button class="tab-btn" data-v="send" onclick="setView('send')" title="Rattana ส่ง LINE"><span data-ic="send"></span>บรอดแคสต์</button>
   <button class="tab-btn" data-v="set" onclick="setView('set')"><span data-ic="settings"></span>ตั้งค่า</button>
 </nav>
 
@@ -1440,6 +1506,14 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   </section>
 
   <!-- ══════════ VIEW: SETTINGS ══════════ -->
+  <!-- v2.58 หน้า "บรอดแคสต์" = แอพ Rattana ส่ง LINE ฝังในแอพ (โหลดครั้งแรกที่เปิด แล้วค้างไว้ สลับไปมาไม่โหลดใหม่) -->
+  <section class="view" id="viewSend">
+    <div class="send-bar"><span>📣 Rattana ส่ง LINE</span><span class="sp"></span>
+      <button class="btn btn-outline btn-sm" onclick="reloadSendApp()" title="โหลดหน้านี้ใหม่">⟳ โหลดใหม่</button>
+      <button class="btn btn-outline btn-sm" onclick="openBlastApp()" title="เปิดในแท็บใหม่">แท็บใหม่ ↗</button></div>
+    <iframe id="sendFrame" title="Rattana ส่ง LINE" allow="identity-credentials-get; clipboard-read; clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </section>
+
   <section class="view scroll-view" id="viewBlast" data-scroll>
     <div class="content" id="blastContent"></div>
   </section>
@@ -1453,7 +1527,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 <nav class="bottom-nav">
   <button class="bni active" data-v="chat" onclick="setView('chat')"><div class="bni-icon"><span data-ic="chat"></span></div><span class="bni-label">แชท</span><span class="nbadge" id="bn-chat"></span></button>
   <button class="bni" data-v="dash" onclick="setView('dash')"><div class="bni-icon"><span data-ic="chart"></span></div><span class="bni-label">แดชบอร์ด</span></button>
-  <button class="bni" data-v="blast" onclick="openBlastApp()" title="เปิดแอพ Rattana ส่ง LINE"><div class="bni-icon"><span data-ic="send"></span></div><span class="bni-label">บรอดแคสต์ ↗</span></button>
+  <button class="bni" data-v="send" onclick="setView('send')" title="Rattana ส่ง LINE"><div class="bni-icon"><span data-ic="send"></span></div><span class="bni-label">บรอดแคสต์</span></button>
   <button class="bni" data-v="set" onclick="setView('set')"><div class="bni-icon"><span data-ic="settings"></span></div><span class="bni-label">ตั้งค่า</span></button>
 </nav>
 
@@ -1483,7 +1557,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.57 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.58 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1542,6 +1616,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.55 (02/11/2569): แดชบอร์ด การ์ด "สินค้าขาด (จากข้อความแจ้ง)" — นับข้อความ "ของใกล้หมด ยังไม่มีสั่งเข้า" แยกตามจัดซื้อ/สินค้า/คลัง + Excel · ซิงก์ทะเบียนพนักงานทุก 5 นาที แก้อีเมล/ชื่อตามชีท (pur-staff-sync-v2.sql) แสดงสิ่งที่แก้ในหน้าสิทธิ์
 //  v2.56 (07/11/2569): ข้อความตอบกลับอัตโนมัติของ OA (bizId "__AUTO_RESPONSE") ขึ้นป้าย "ระบบตอบกลับอัตโนมัติ (OA)" ไม่ใช่ "แอดมิน OA" — ฐานข้อมูลไม่นับว่าตอบ/ไม่ล้างยังไม่อ่าน (pur-auto-response.sql) · ⭐ ป้ายของฉัน ป้ายสถานะแชทส่วนตัว เห็นคนเดียว (pur-my-tags.sql)
 //  v2.57 (11/11/2569): ปุ่มบรอดแคสต์ (แท็บบน + เมนูล่าง) เปิดแอพ Rattana ส่ง LINE (rattana-budget-letter.html) แท็บใหม่ แทนหน้าบรอดแคสต์ในแอพ · ค้างหน้า blast เดิม → กลับหน้าแชท
+//  v2.58 (16/11/2569): บรอดแคสต์ = Rattana ส่ง LINE ฝังในแอพ · ทัวร์สอนใช้ครั้งแรก · ⏰ ตามคำสัญญา · 🔥 แชทด่วนขึ้นบนสุด · 🏆 ตอบไวประจำสัปดาห์ · 🌅 สรุปเช้า (ตั้งค่า) · 🎙️ ถอดเสียง · ป๊อปอัปของใหม่ก่อน/หลังอัปเดต (pur-v258-extras.sql · pur-brief · pur-push v2.4)
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1636,12 +1711,22 @@ let activeId = null, listFilter = 'all', searchQ = '', view = 'chat', quoting = 
 let listWh = '';                    // v2.29 กรองตามป้ายคลังส่ง ('' = ไม่กรอง)
 const mentPopSeen = new Set();       // v2.29 ป้ายเด้ง "โดนแท็ก" เล่นท่าเข้าครั้งเดียวต่องาน (รายการถูกวาดใหม่บ่อย)
 let listTag = '';                   // v2.23 กรองตามป้ายสถานะแชท ('' = ไม่กรอง)
+// v2.58 🔥 ด่วน (ลูกค้าเร่ง/ไม่พอใจ ระหว่างงานรอตอบนี้) · ⏰ คำสัญญาของทีม (pur-v258-extras.sql)
+const isHot = c => !!(c && c.hot_at && c.awaiting_since && c.status !== 'resolved' && Date.parse(c.hot_at) >= Date.parse(c.awaiting_since));
+const promiseLate = c => !!(c && c.promise_due && Date.parse(c.promise_due) <= Date.now());
+const hotLabel = w => /ด่วน/.test(w || '') ? 'ด่วน' : /(รอนาน|นานมาก|ทำไมยังไม่|ยังไม่ได้รับ|หลายรอบ)/.test(w || '') ? 'ตามหลายรอบ/รอนาน' : 'ไม่พอใจ';
+const pinTop = c => (isHot(c) || promiseLate(c)) && c.status !== 'resolved' && !c.exclude_kpi;
+const hhmm = t => { const d = new Date(t); const today = new Date().toDateString() === d.toDateString(); return (today ? '' : thDateShort(d) + ' ') + thTime(d); };
 // v2.56 ป้ายของฉัน (pur-my-tags.sql) — แต่ละคนตั้งชุดป้ายเอง ติดแชทแล้วเห็นคนเดียว · ป้ายทีม (settings.chat_tags) ใช้ร่วมกันเหมือนเดิม
 let myTags = [], myChatTags = new Map();
+let awards = [];                     // v2.58 🏆 ประจำสัปดาห์ของบัญชีนี้ (สัปดาห์ล่าสุด · ติดชื่อ 7 วัน)
+const champOf = e => awards.filter(a => a.email === e).map(a => a.kind === 'fast' ? '🏆' : '🚀').join('');
+const champTag = e => { const t = champOf(e); return t ? `<span class="champ" title="${t.includes('🏆') ? 'ตอบไวที่สุดประจำสัปดาห์' : ''}${t.length > 2 ? ' · ' : ''}${t.includes('🚀') ? 'พัฒนาขึ้นมากที่สุดประจำสัปดาห์' : ''}">${t}</span>` : ''; };
 const tagPal = () => { const team = settings?.chat_tags || []; return [...team, ...myTags.filter(t => !team.includes(t))]; };
 const isMyTag = t => !(settings?.chat_tags || []).includes(t) && myTags.includes(t);
 const chatTagsOf = c => { const team = c?.tags || []; return [...team, ...(myChatTags.get(c?.id) || []).filter(t => !team.includes(t))]; };
 const LS = { get(k){ try{ return localStorage.getItem(k); }catch(_){ return null; } }, set(k, v){ try{ localStorage.setItem(k, v); }catch(_){} } };
+const WN_PRIOR = !!(LS.get('pur.view') || LS.get('pur.newSeen') || LS.get('pur.updFrom'));   // v2.58 เคยเปิดแอพในเครื่องนี้มาก่อน (คนใหม่ = ไม่ขึ้น "อัปเดตเรียบร้อย" ดูทัวร์แทน)
 let clockMode = LS.get('pur.clock') || 'biz';          // biz = เวลาทำการ · raw = 24 ชม.
 // ค่าตั้งแจ้งเตือนอยู่ในบล็อก "การแจ้งเตือน" ด้านล่าง (notiPrefs)
 let listSort  = LS.get('pur.sort') === 'wait' ? 'wait' : 'recent';   // recent = แบบ LINE ข้อความล่าสุดบนสุด · wait = รอตอบนานสุดก่อน
@@ -1818,8 +1903,31 @@ async function loadMembers(){
   members = new Map((data || []).map(r => [r.email, r]));
 }
 async function loadPeople(){ const rows = await fetchAll('pur_people', q => q.order('last_seen_at', { ascending:false })); people = new Map(rows.map(r => [r.line_user_id, r])); }
-async function loadSettings(){ const aid = acct.id; const { data, error } = await sb.from('pur_settings').select('*').eq('id', aid).maybeSingle(); if(error) throw new Error(error.message); if(acct?.id !== aid) return; applySettings(data); loadMyTags(); }
+async function loadSettings(){ const aid = acct.id; const { data, error } = await sb.from('pur_settings').select('*').eq('id', aid).maybeSingle(); if(error) throw new Error(error.message); if(acct?.id !== aid) return; applySettings(data); loadMyTags(); loadAwards(); }
 // v2.56 ป้ายของฉัน: ชุดป้าย + ป้ายที่ติดแชทของบัญชีนี้ (RLS ให้เห็นแค่ของตัวเอง) · โหลดไม่ได้ (ยังไม่รัน SQL) = ไม่มีป้ายของฉัน แอพทำงานต่อ
+async function loadAwards(){
+  const aid = acct.id; awards = [];
+  if(DEMO){ const m = [...members.values()].filter(x => x.active && x.role !== 'admin'); if(m[0]) awards = [{ kind:'fast', email:m[0].email, value_sec:540, n:42, week_end:new Date().toISOString().slice(0, 10) }]; if(m[1]) awards.push({ kind:'improved', email:m[1].email, value_sec:900, prev_sec:1800, n:20, week_end:awards[0].week_end }); }
+  else try{
+    const since = new Date(Date.now() - 7 * 86400e3).toISOString().slice(0, 10);
+    const { data, error } = await sb.from('pur_week_awards').select('kind,email,value_sec,prev_sec,n,week_end').eq('account_id', aid).gte('week_end', since).order('week_end', { ascending:false });
+    if(error) throw error; if(acct?.id !== aid) return;
+    const top = data?.[0]?.week_end; awards = (data || []).filter(x => x.week_end === top);
+  }catch(e){ console.warn('awards:', e.message); }
+  renderList(); if(activeId && chatById.get(activeId)) renderChatHeader(chatById.get(activeId));
+  setTimeout(announceAwards, 1200);
+}
+// ประกาศครั้งเดียวต่อเครื่องต่อสัปดาห์ (ไม่เด้งทับทัวร์/ป๊อปอัปอื่น)
+function announceAwards(tries = 0){
+  if(!awards.length || !acct) return;
+  const key = `pur.award:${acct.id}:${awards[0].week_end}`; if(LS.get(key)) return;
+  if($('tourOv') || $('rmdOv') || $('modal')?.classList.contains('open')){ if(tries < 60) setTimeout(() => announceAwards(tries + 1), 3000); return; }
+  LS.set(key, '1');
+  const row = a => `<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--border)"><div style="font-size:30px">${a.kind === 'fast' ? '🏆' : '🚀'}</div>
+    <div><div style="font-weight:700;font-size:16px">${esc(memberName(a.email))}</div><div class="txt-sm txt-muted">${a.kind === 'fast' ? `ตอบไวที่สุด · เวลาตอบกลาง ${fmtDur(a.value_sec)} จาก ${nf(a.n)} งาน` : `พัฒนาขึ้นมากที่สุด · ${fmtDur(a.prev_sec)} → ${fmtDur(a.value_sec)}`}</div></div></div>`;
+  openModal('🎉 ประจำสัปดาห์ · ' + esc(acctName()), `<div class="txt-sm txt-muted mb-8">นับเวลาทำการ 7 วันล่าสุด · ติดป้ายข้างชื่อ 1 สัปดาห์</div>${awards.map(row).join('')}`,
+    `<button class="btn btn-gold" onclick="closeModal()">ปรบมือ 👏</button>`);
+}
 async function loadMyTags(){
   const aid = acct.id;
   if(DEMO){ try{ myTags = JSON.parse(LS.get('pur.demoMyTags') || '["ตามต่อพรุ่งนี้"]'); }catch(_){ myTags = []; } renderTagChips(); return; }
@@ -2017,6 +2125,8 @@ function filteredChats(){
     if(q){ const hay = [c.supplier_name, c.title, c.last_message, c.note, c.assignee_email && memberName(c.assignee_email), ...chatTagsOf(c), c.wh_tag, c.cust_code].join(' ').toLowerCase(); if(!hay.includes(q)) return false; }
     return true;
   }).sort((a, b) => {
+    const pa = pinTop(a) ? 1 : 0, pb = pinTop(b) ? 1 : 0;   // v2.58 🔥/⏰ ขึ้นบนสุด
+    if(pa !== pb) return pb - pa;
     const recent = (Date.parse(b.last_message_at || 0) || 0) - (Date.parse(a.last_message_at || 0) || 0);
     if(listSort !== 'wait') return recent;          // แบบ LINE: ข้อความล่าสุดบนสุด แชทเก่าลงล่าง
     // รอนานสุดก่อน: งานรอตอบขึ้นก่อน (รอนานสุดบนสุด) แล้วค่อยเรียงตามข้อความล่าสุด
@@ -2183,7 +2293,11 @@ function renderList(){
     const tags = [];
     tags.push(`<span class="tag">${c.kind === 'user' ? '1:1' : `👥 กลุ่ม${c.member_count ? ' · ' + c.member_count : ''}`}</span>`);
     if(useOwner() || c.assignee_email)
-      tags.push(c.assignee_email ? `<span class="tag assg">👤 ${esc(memberName(c.assignee_email))}</span>` : `<span class="tag none">ไม่มีผู้รับผิดชอบ</span>`);
+      tags.push(c.assignee_email ? `<span class="tag assg">👤 ${esc(memberName(c.assignee_email))}${champTag(c.assignee_email)}</span>` : `<span class="tag none">ไม่มีผู้รับผิดชอบ</span>`);
+    if(isHot(c)) tags.push(`<span class="tag hot" title="ลูกค้าพิมพ์ว่า &quot;${esc(c.hot_word)}…&quot; — ดันขึ้นบนสุดจนกว่าจะตอบ">🔥 ${hotLabel(c.hot_word)}</span>`);
+    if(c.promise_due) tags.push(promiseLate(c)
+      ? `<span class="tag hot" title="${esc(c.promise_by ? memberName(c.promise_by) + ' ' : '')}สัญญาไว้: ${esc(c.promise_text || '')}">⏰ เลยเวลาที่สัญญา ${hhmm(c.promise_due)}</span>`
+      : `<span class="tag prom" title="${esc(c.promise_by ? memberName(c.promise_by) + ' ' : '')}สัญญาไว้: ${esc(c.promise_text || '')}">⏰ สัญญาไว้ ${hhmm(c.promise_due)}</span>`);
     if(age != null) tags.push(`<span class="tag wait ${over ? 'over' : ''}">⏱ รอ ${fmtDur(age)}${over ? ' · เกิน SLA' : ''}</span>`);
     if(c.wh_tag) tags.push(`<span class="tag wh" title="คลังส่งจากชีทลูกค้า${c.cust_code ? ' · รหัส ' + esc(c.cust_code) : ''}">🚚 ${esc(c.wh_tag)}</span>`);
     mentionsOpen(c).forEach(x => { const a = elapsedSec(x.s, null), o = a > sla, mine = x.e === me?.email;
@@ -2367,6 +2481,7 @@ function renderTools(c){
   h += `<button class="tool-btn ${c.status === 'resolved' ? 'done' : ''}" onclick="toggleResolve()">${c.status === 'resolved' ? '✓ เสร็จแล้ว · เปิดใหม่' : '✓ ทำเครื่องหมายเสร็จ'}</button>`;
   const pal = tagPal(), ct = chatTagsOf(c);
   h += `<button class="tool-btn" onclick="openTagMenu()" title="ป้ายสถานะแชท — ใช้กรองรายการแชท ไม่เกี่ยวกับสถิติ">🏷 ${ct.length ? esc(ct.map(t => (isMyTag(t) ? '⭐' : '') + t).join(' · ')) : 'ติดป้าย'}</button>`;   // v2.56 แสดงเสมอ — ตั้งป้ายของฉันได้จากเมนูนี้
+  if(c.promise_due) h += `<button class="tool-btn prom ${promiseLate(c) ? 'late' : ''}" onclick="clearPromise()" title="${esc(c.promise_by ? memberName(c.promise_by) + ' ' : '')}สัญญาไว้: ${esc(c.promise_text || '')} · กดเมื่อทำตามสัญญาแล้ว (ตอบลูกค้าในแชทนี้ ป้ายหายเอง)">⏰ ${promiseLate(c) ? 'เลยเวลาที่สัญญา' : 'สัญญาไว้'} ${hhmm(c.promise_due)} ✓</button>`;
   h += `<button class="tool-btn" onclick="markUnread()" title="เผลอเปิดอ่าน? ให้แชทนี้กลับไปขึ้นตัวหนาเหมือนยังไม่ได้อ่าน">● ยังไม่อ่าน</button>`;
   if(c.awaiting_since && !c.exclude_kpi) h += `<button class="tool-btn danger" onclick="dismissWait()" title="ปิดงานรอตอบโดยไม่ตอบ เช่น ข้อความไม่เกี่ยวกับเรา">🚫 ไม่ต้องตอบ</button>`;
   if(isSup()) h += `<span class="tool-sp"></span><button class="tool-btn ${c.exclude_kpi ? 'danger' : ''}" onclick="toggleExclude()" title="แชททดสอบ/แชทภายใน ไม่ควรนับสถิติ">${c.exclude_kpi ? '📵 ไม่นับสถิติ' : '📊 นับสถิติ'}</button>`;
@@ -2507,7 +2622,8 @@ function bubbleBody(m){
     case 'sticker': return [`<img class="sticker" src="${esc(c)}" alt="สติกเกอร์" loading="lazy">`, true];
     case 'image':   return [`<img class="photo" ${mediaAttr(c)} alt="รูปภาพ" loading="lazy" onclick="lbOpen(this)">`, true];
     case 'video':   return gdId(c) ? [gdLink(gdId(c), '🎬 วิดีโอ'), false] : [`<video class="photo" ${mediaAttr(c)} controls preload="metadata"></video>`, true];
-    case 'audio':   return gdId(c) ? [gdLink(gdId(c), '🎵 เสียง'), false] : [`<audio ${mediaAttr(c)} controls preload="metadata" style="max-width:240px"></audio>`, true];
+    case 'audio':   return [(gdId(c) ? gdLink(gdId(c), '🎵 เสียง') : `<audio ${mediaAttr(c)} controls preload="metadata" style="max-width:240px"></audio>`)
+                       + (m.transcript ? `<div class="transcript" title="ถอดเสียงอัตโนมัติ (อาจผิดบ้าง)">📝 ${esc(m.transcript)}</div>` : ''), !gdId(c) && !m.transcript];   // v2.58 ถอดเสียง
     case 'file':    return [`<a href="#" ${mediaAttr(c, 'data-url')} onclick="openFile(event,this)">📎 ${esc(m.file_name || 'เปิดไฟล์แนบ')}</a>`, false];
     // การ์ด Flex จากระบบภายใน (เช่น ระบบใบสั่งซื้อ) — วาดให้เหมือนที่ซัพพลายเออร์เห็นใน LINE
     case 'flex': {
@@ -2819,7 +2935,7 @@ function renderMsgs(msgs){
     let bubble;
     if(m.unsent) bubble = '<div class="bubble unsent">ข้อความถูกยกเลิก</div>';
     else { const [inner, media] = bubbleBody(m); bubble = `<div class="bubble ${media ? 'media' : ''}">${qHtml}${inner}</div>`; }
-    const who = out ? `${m.staff_email ? memberName(m.staff_email) : (m.sender_name || sysCardOf(m) || (m.via === 'oa' ? 'แอดมิน OA' : 'คนในบริษัท'))} · ${viaLabel(m.via)}` : (c && c.kind !== 'user' ? (m.sender_name || 'สมาชิกกลุ่ม') : '');
+    const who = out ? `${m.staff_email ? memberName(m.staff_email) + champOf(m.staff_email) : (m.sender_name || sysCardOf(m) || (m.via === 'oa' ? 'แอดมิน OA' : 'คนในบริษัท'))} · ${viaLabel(m.via)}` : (c && c.kind !== 'user' ? (m.sender_name || 'สมาชิกกลุ่ม') : '');
     const canQuote = canQuoteMsg(m, c);
     html += `<div class="msg-grp ${right ? 'fa' : 'fc'}${staffLine ? ' staff' : ''}" data-mid="${m.id}">
       ${staffLine ? `<div class="sender">${esc(m.staff_email ? memberName(m.staff_email) : (m.sender_name || 'คนในบริษัท'))}<span class="stf">ทีม</span></div>` : !out && who ? `<div class="sender">${esc(who)}</div>` : ''}
@@ -3552,8 +3668,128 @@ function onKey(e){ if(mpKey(e)) return; if(e.key === 'Enter' && !e.shiftKey && w
 function grow(el){ el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 120) + 'px'; }
 function syncSend(){ $('sendBtn').classList.toggle('lit', $('replyInp').value.trim().length > 0); }
 // v2.57 ปุ่มบรอดแคสต์ → เปิดแอพ Rattana ส่ง LINE แทนหน้าบรอดแคสต์ในแอพ (ผู้ใช้ 11/11 · โค้ดหน้าเดิมยังอยู่ ไม่มีทางเข้า)
-const BLAST_APP_URL = 'https://rattanaphaiboon.github.io/app/rattana-budget-letter.html';
+const BLAST_APP_URL = 'https://rattanaphaiboon.github.io/app/rattana-linesend.html';   // v2.58 ลิงก์ตรง (rattana-budget-letter.html พาต่อมาที่นี่)
+// v2.58 ฝังในแอพ: One Chat ตัวจริงอยู่ rattanaphaiboon.github.io เหมือนกัน → ใช้ที่เก็บข้อมูลชุดเดียวกับเปิดแอพนั้นตรงๆ
+//   เคยล็อกอิน Rattana ส่ง LINE ในเบราว์เซอร์นี้แล้ว = เข้าได้เลย · ยังไม่เคย = ล็อกอิน Google ครั้งแรกครั้งเดียว (ลิงก์ทดสอบคนละโดเมน ต้องล็อกอินแยก)
+function loadSendApp(force){ const f = $('sendFrame'); if(!f) return; if(force || !f.src) f.src = BLAST_APP_URL; }
+function reloadSendApp(){ const f = $('sendFrame'); if(f){ f.src = 'about:blank'; setTimeout(() => loadSendApp(true), 50); } }
 function openBlastApp(){ const w = window.open(BLAST_APP_URL, '_blank'); if(w) w.opener = null; else location.href = BLAST_APP_URL; }   // ใส่ 'noopener' แล้ว window.open คืน null เสมอ → ใช้ตัด opener เอง
+// ═══ v2.58 สอนใช้ครั้งแรก — ชี้ทีละจุดบนหน้าจอจริง ═══
+// เห็นอัตโนมัติ 1 ครั้งต่อเครื่อง และทุกครั้งที่เปลี่ยน TOUR_VER (อัปเดตใหญ่ = สอนทุกคนใหม่) · ดูซ้ำ: ตั้งค่า › วิธีใช้แอพ หรือเมนู ⋯
+const TOUR_VER = '2.58';
+const visEl = sels => (Array.isArray(sels) ? sels : [sels]).map(q => document.querySelector(q)).find(el => el && el.offsetParent !== null && el.getBoundingClientRect().width > 0) || null;
+const tabSel = v => [`.tab-btn[data-v="${v}"]`, `.bni[data-v="${v}"]`];
+function tourSteps(){
+  const owner = useOwner(), sup = isSup();
+  return [
+    { title:'👋 ยินดีต้อนรับสู่ Rattana One Chat', body:`แอพรวมแชท LINE OA (และ Facebook) ของบริษัทไว้ที่เดียว ตอบลูกค้า/ซัพได้จากที่นี่ และระบบนับให้เองว่างานไหนยังรอตอบ<br>มาดูกันว่าอะไรอยู่ตรงไหน ใช้เวลาไม่ถึง 1 นาที` },
+    { sel:'#hdrAcct', title:'สลับบัญชี LINE', body:`กดตรงนี้เพื่อเปลี่ยนบัญชีที่ดูอยู่ (เช่น RTNPurchase / Rattana Official / Rattana Mart) หรือเปิด <b>ภาพรวมทุกบัญชี</b>` },
+    { sel:'.search-wrap', title:'ค้นหา + เรียงลำดับ', body:`ค้นหาชื่อแชท ข้อความ หรือเลข PO ได้ · ปุ่ม <b>⇅</b> สลับเรียง "ข้อความล่าสุด" กับ "รอตอบนานสุด"` },
+    { sel:'#listChips', title:'ตัวกรองแชท', body:`<ul><li><b>รอตอบ</b> = แชทที่ยังไม่มีใครตอบ (ตัวเลขนี้คือ KPI)</li><li><b>@ แท็กถึงฉัน</b> = มีคนแท็กคุณในกลุ่ม</li>${owner ? '<li><b>ของฉัน</b> = แชทที่คุณรับผิดชอบ</li>' : ''}<li><b>เสร็จแล้ว</b> = แชทที่ปิดเรื่องแล้ว</li></ul>` },
+    { sel:'#tagChips', title:'🏷 ป้ายสถานะแชท', body:`กดป้ายเพื่อกรองแชท · <b>ป้ายทีม</b> (สีฟ้า) ทุกคนเห็น · <b>⭐ ป้ายของฉัน</b> (สีทอง) เห็นคนเดียว ตั้งชื่อเองได้` },
+    { sel:'#convList', title:'รายการแชท', body:`ตัวหนา = ยังไม่อ่าน · <b>⏱ รอ…</b> = เวลาที่ลูกค้ารอ (แดง = เกินกำหนด) · <b>🔥</b> = ลูกค้าเร่ง/ไม่พอใจ · <b>⏰</b> = ทีมสัญญาว่าจะตอบกลับ (2 อย่างนี้ขึ้นบนสุด) · <b>🏆</b> ข้างชื่อ = ตอบไวประจำสัปดาห์ · จุด <b>L</b>/<b>f</b> ที่มุมรูป = มาจาก LINE / Facebook<br>กดแชทเพื่อเปิดอ่านและตอบ` },
+    { sel:'#chatTools', title:'เครื่องมือในแชท', body:`เมื่อเปิดแชทจะมีแถบนี้:<ul>${owner ? '<li><b>👤 ผู้รับผิดชอบ</b> / <b>✋ รับเรื่องเอง</b></li>' : ''}<li><b>✓ ทำเครื่องหมายเสร็จ</b> เมื่อจบเรื่อง</li><li><b>🏷 ติดป้าย</b> · <b>● ยังไม่อ่าน</b> (เผลอเปิด)</li><li><b>🚫 ไม่ต้องตอบ</b> ข้อความที่ไม่ต้องตอบ (ไม่นับเป็นงานค้าง)</li><li>พิมพ์ "เดี๋ยวเช็คให้นะคะ" ระบบจดเป็น <b>⏰ คำสัญญา</b> และเตือนเมื่อถึงเวลา</li></ul>` },
+    { sel:'.reply-bar', title:'พิมพ์และส่ง', body:`<ul><li>ปุ่มข้อความตอบด่วนเหนือช่องพิมพ์ กดแล้วแก้ก่อนส่งได้</li><li>ส่งรูป · ไฟล์ · อิโมจิ/สติกเกอร์ · วางรูปด้วย Ctrl+V</li><li>ในกลุ่มพิมพ์ <b>@</b> เพื่อแท็กเพื่อน · คลิกขวา/กดค้างที่ข้อความเพื่อ <b>ตอบกลับ</b></li><li>ข้อความเสียงจากลูกค้าถอดเป็นตัวหนังสือให้อัตโนมัติ</li></ul>` },
+    { sel:'#bellBtn', title:'🔔 แจ้งเตือน', body:`รวมแชทใหม่ งานใกล้เกินเวลา และการแท็กถึงคุณ · เปิดแจ้งเตือนบนมือถือ/คอมได้ที่หน้า <b>ตั้งค่า</b>` },
+    { sel:tabSel('dash'), title:'📊 แดชบอร์ด', body:`ดูว่าใครตอบอะไร เร็วแค่ไหน งานค้างกี่งาน ${sup ? '(หัวหน้าเห็นทุกคน)' : '(คุณเห็นของตัวเอง)'}${acct?.slug === 'purchase' ? ' · ท้ายหน้ามีการ์ด <b>สินค้าขาด</b>' : ''}` },
+    { sel:tabSel('send'), title:'📣 บรอดแคสต์', body:`เปิดแอพ <b>Rattana ส่ง LINE</b> ในแอพนี้เลย ใช้ส่งเอกสาร/ข้อความถึงคู่ค้าและลูกค้าหลายคนพร้อมกัน` },
+    { sel:tabSel('set'), title:'⚙️ ตั้งค่า', body:`<ul><li><b>ผูก LINE</b> ของคุณ (ตอบจาก LINE ส่วนตัวแล้วนับเป็นผลงานคุณ)</li><li>เปิด<b>แจ้งเตือน</b> · แก้<b>ข้อความตอบด่วน</b> · ตั้ง<b>⭐ ป้ายของฉัน</b></li><li>ดูวิธีใช้นี้อีกครั้งได้ที่ <b>📖 วิธีใช้แอพ</b></li></ul>` },
+    { title:'พร้อมใช้งานแล้ว 🎉', body:`เริ่มจากกดตัวกรอง <b>รอตอบ</b> แล้วไล่ตอบจากบนลงล่างได้เลย<br>สงสัยตรงไหน เอาเมาส์ชี้ (หรือกดค้าง) ที่ปุ่ม จะมีคำอธิบายขึ้นมา` },
+  ];
+}
+let tour = null;
+function maybeStartTour(tries = 0){
+  if(LS.get('pur.tourVer') === TOUR_VER) return;
+  const busy = !started || !acct || !$('acctGate').classList.contains('hide') || $('rmdOv') || $('wnOv') || $('modal')?.classList.contains('open') || view !== 'chat';
+  if(busy){ if(tries < 120) setTimeout(() => maybeStartTour(tries + 1), 1500); return; }
+  startTour(false);
+}
+function startTour(manual){
+  if(manual && view !== 'chat') setView('chat');
+  endTour(false);
+  tour = { i:0, steps:tourSteps() };
+  const ov = document.createElement('div'); ov.id = 'tourOv';
+  ov.innerHTML = '<div class="t-shade"></div><div class="t-spot" hidden></div><div class="t-card" role="dialog" aria-live="polite"></div>';
+  ov.querySelector('.t-shade').onclick = () => tourGo(1);
+  document.body.appendChild(ov);
+  window.addEventListener('resize', tourPaint); document.addEventListener('keydown', tourKey, true);
+  setTimeout(tourPaint, manual ? 80 : 0);
+}
+function tourKey(e){
+  if(!tour) return;
+  if(e.key === 'Escape'){ e.preventDefault(); e.stopPropagation(); endTour(true); }
+  else if(e.key === 'ArrowRight' || e.key === 'Enter'){ e.preventDefault(); tourGo(1); }
+  else if(e.key === 'ArrowLeft'){ e.preventDefault(); tourGo(-1); }
+}
+function tourGo(d){
+  if(!tour) return;
+  const n = tour.i + d;
+  if(n >= tour.steps.length){ endTour(true); return; }
+  if(n < 0) return;
+  tour.i = n; tourPaint();
+}
+function endTour(done){
+  if(done) LS.set('pur.tourVer', TOUR_VER);
+  $('tourOv')?.remove(); tour = null;
+  window.removeEventListener('resize', tourPaint); document.removeEventListener('keydown', tourKey, true);
+}
+function tourPaint(){
+  const ov = $('tourOv'); if(!ov || !tour) return;
+  const st = tour.steps[tour.i], N = tour.steps.length, card = ov.querySelector('.t-card'), spot = ov.querySelector('.t-spot');
+  const el = st.sel ? visEl(st.sel) : null;
+  // เป้ายังไม่โผล่ (เช่น ยังไม่ได้เปิดแชท) → อธิบายกลางจอแทน
+  const extra = st.sel && !el ? `<div class="txt-sm txt-muted mt-8">(${st.sel === '#chatTools' || st.sel === '.reply-bar' ? 'จะเห็นตอนเปิดแชท' : st.sel === '#tagChips' ? 'จะขึ้นเมื่อบัญชีมีป้าย' : 'ส่วนนี้ไม่แสดงในหน้าจอนี้'})</div>` : '';
+  card.innerHTML = `<div class="t-step">${tour.i + 1} / ${N}</div><div class="t-title">${st.title}</div><div class="t-body">${st.body}</div>${extra}
+    <div class="t-foot"><button class="btn btn-outline btn-sm" onclick="endTour(true)">ข้าม</button><span class="t-dots">${tour.steps.map((_, k) => `<i class="${k === tour.i ? 'on' : ''}"></i>`).join('')}</span><span class="sp"></span>
+      ${tour.i ? '<button class="btn btn-outline btn-sm" onclick="tourGo(-1)">ย้อน</button>' : ''}<button class="btn btn-gold btn-sm" onclick="tourGo(1)">${tour.i === N - 1 ? 'เริ่มใช้งาน' : 'ถัดไป →'}</button></div>`;
+  const vw = window.innerWidth, vh = window.innerHeight, cw = card.offsetWidth, ch = card.offsetHeight, m = 12;
+  if(!el){
+    ov.classList.remove('has-spot'); spot.hidden = true;
+    card.style.left = Math.max(m, (vw - cw) / 2) + 'px'; card.style.top = Math.max(m, (vh - ch) / 2) + 'px'; return;
+  }
+  el.scrollIntoView({ block:'nearest', inline:'nearest' });
+  const r = el.getBoundingClientRect(), pad = 6;
+  const box = { l:Math.max(4, r.left - pad), t:Math.max(4, r.top - pad), r:Math.min(vw - 4, r.right + pad), b:Math.min(vh - 4, r.bottom + pad) };
+  ov.classList.add('has-spot'); spot.hidden = false;
+  Object.assign(spot.style, { left:box.l + 'px', top:box.t + 'px', width:(box.r - box.l) + 'px', height:(box.b - box.t) + 'px' });
+  // การ์ดวางใต้เป้าถ้าที่พอ ไม่งั้นวางเหนือ · เป้าสูงเกือบเต็มจอ (รายการแชท) → วางข้างๆ หรือกลางจอ
+  let top, left = Math.min(Math.max(m, r.left + r.width / 2 - cw / 2), vw - cw - m);
+  if(vh - box.b >= ch + m * 2) top = box.b + m;
+  else if(box.t >= ch + m * 2) top = box.t - ch - m;
+  else if(vw - box.r >= cw + m * 2){ left = box.r + m; top = Math.min(Math.max(m, r.top), vh - ch - m); }
+  else if(box.l >= cw + m * 2){ left = box.l - cw - m; top = Math.min(Math.max(m, r.top), vh - ch - m); }
+  else top = Math.max(m, vh - ch - m);
+  card.style.left = left + 'px'; card.style.top = top + 'px';
+}
+// v2.58 🌅 สรุปเช้าเข้า LINE หัวหน้า (pur-brief · จ–ส 08:00)
+function briefCardHtml(){
+  const on = settings.brief_on !== false;
+  return `<div class="card card-gold"><div class="card-head"><h3>🌅 สรุปเช้าทาง LINE · ${esc(acctName())}</h3>
+    <div class="hint">ทุกวันจันทร์–เสาร์ 08:00 ส่งสรุปเข้า LINE ส่วนตัวของ<b>หัวหน้าบัญชีนี้</b>ที่ผูก LINE กับแอพแล้ว: งานที่ทักเข้ามา ตอบทันเวลากี่ % งานค้าง รอนานสุด คนที่ตอบช้า ⏰ คำสัญญาที่เลยเวลา 🔥 แชทด่วน${acct?.slug === 'purchase' ? ' 📦 สินค้าใกล้หมด' : ''} ·
+      ส่งจาก LINE OA ${esc(acctName())} (นับโควตาข้อความของ OA วันละ 1 ข้อความต่อหัวหน้า) · หัวหน้าต้องเป็นเพื่อนกับ OA นี้</div></div>
+    <div class="card-body"><label class="row" style="gap:8px;cursor:pointer"><input type="checkbox" id="briefOn" ${on ? 'checked' : ''} onchange="saveBrief(this.checked)"> ส่งสรุปเช้าของบัญชีนี้</label>
+      <div class="mt-8"><button class="btn btn-outline btn-sm" onclick="testBrief()">📨 ส่งสรุปตอนนี้ให้ฉันดู</button></div></div></div>`;
+}
+async function saveBrief(on){
+  try{ await rpc('pur_set_brief', { p_account:acct.id, p_on:!!on }); settings.brief_on = !!on; showToast(on ? 'เปิดสรุปเช้าแล้ว ✓' : 'ปิดสรุปเช้าแล้ว', 'success'); }
+  catch(e){ if(e.message !== 'demo') showToast(e.message, 'error'); }
+}
+async function testBrief(){
+  if(DEMO){ showToast('โหมดตัวอย่าง — ไม่ได้ส่งจริง', 'info'); return; }
+  try{
+    const { data:{ session } } = await sb.auth.getSession();
+    const r = await fetch(SUPABASE_URL + '/functions/v1/pur-brief', { method:'POST', headers:{ 'Content-Type':'application/json', Authorization:'Bearer ' + session.access_token, apikey:SUPABASE_ANON },
+      body:JSON.stringify({ action:'test', accountId:acct.id }) });
+    const j = await r.json().catch(() => ({}));
+    if(!j.ok) throw new Error(j.error || ('HTTP ' + r.status));
+    showToast(j.sent ? 'ส่งเข้า LINE ของคุณแล้ว ✓' : 'ส่งไม่สำเร็จ — ' + (j.failed?.[0]?.error || 'ตรวจว่าเป็นเพื่อนกับ OA นี้แล้ว'), j.sent ? 'success' : 'error', 5000);
+  }catch(e){ showToast('ส่งไม่สำเร็จ: ' + e.message, 'error', 5000); }
+}
+function helpCardHtml(){
+  return `<div class="card card-gold"><div class="card-head"><h3>📖 วิธีใช้แอพ</h3>
+    <div class="hint">พาชมทีละจุดว่าฟีเจอร์อะไรอยู่ตรงไหน (ไม่ถึง 1 นาที) · เปิดแอพครั้งแรกจะเห็นเอง</div></div>
+    <div class="card-body"><button class="btn btn-gold" onclick="startTour(true)">▶ เริ่มสอนใช้</button></div></div>`;
+}
 function useQuick(btn){ const i = $('replyInp'); i.value = btn.textContent.trim(); i.focus(); grow(i); syncSend(); warmSend(); }
 
 // ── CHAT ACTIONS (RPC) ──
@@ -3601,6 +3837,14 @@ async function toggleExclude(){
   catch(e){ if(e.message !== 'demo') showToast(e.message, 'error'); }
 }
 // v2.23 ติด/ถอดป้ายสถานะแชท — ทุกคนในบัญชีทำได้ · ชุดป้ายหัวหน้าตั้งในหน้าตั้งค่า
+// v2.58 ⏰ ปิดคำสัญญาเอง (เช่น โทรคุยแล้ว ไม่ได้พิมพ์ในแชท)
+async function clearPromise(){
+  const id = activeId, c = chatById.get(id); if(!c?.promise_due) return;
+  if(!confirm(`ทำตามที่สัญญาไว้แล้ว?\n"${c.promise_text || ''}"\n\n(ตอบลูกค้าในแชทนี้ ป้ายจะหายเอง ไม่ต้องกด)`)) return;
+  if(DEMO){ patchChat(id, { promise_due:null, promise_text:null, promise_by:null, promise_at:null }); return; }
+  try{ await rpc('pur_promise_clear', { p_chat:id }); patchChat(id, { promise_due:null, promise_text:null, promise_by:null, promise_at:null }); showToast('ปิดคำสัญญาแล้ว ✓', 'success'); }
+  catch(e){ if(e.message !== 'demo') showToast(e.message, 'error'); }
+}
 function openTagMenu(){
   const c = chatById.get(activeId); if(!c) return;
   const team = settings?.chat_tags || [], cur = new Set(chatTagsOf(c));
@@ -4020,7 +4264,7 @@ function remindRows(){
   return rows.sort((a, b) => b.age - a.age);
 }
 function showRemind(why){
-  if(!started || !notiPrefs.remind || $('rmdOv') || !acct) return;
+  if(!started || !notiPrefs.remind || $('rmdOv') || $('tourOv') || $('wnOv') || !acct) return;
   if(document.querySelector('.modal.open') || $('modal')?.classList.contains('open')) return;   // กำลังทำอย่างอื่นในหน้าต่างอยู่ — ไม่แทรก
   const rows = remindRows(); if(!rows.length) return;
   if(why === 'return' && Date.now() - rmdShownAt < RMD_GAP_MS) return;
@@ -4080,7 +4324,7 @@ async function checkUpdate(){
   if(DEMO) return;
   try{
     const res = await fetch(location.pathname + '?v=' + Date.now(),
-                            { cache:'no-store', headers:{ Range:'bytes=0-1500' } });
+                            { cache:'no-store', headers:{ Range:'bytes=0-12000' } });   // v2.58 รวมรายการของใหม่ (whatsNew) ต้นไฟล์
     if(!res.ok && res.status !== 206) return;
     const head = await res.text();
     const m = /(?:Rattana One Chat|RTN Chat Hub) v([0-9.]+)/.exec(head);
@@ -4088,12 +4332,61 @@ async function checkUpdate(){
     updSeen = m[1];
     $('updVer').textContent = 'v' + m[1];
     $('updBar').classList.add('show');
+    showWhatsNew('before', m[1], parseWhatsNew(head));             // v2.58 ป๊อปอัป "ของใหม่มาแล้ว" (ปิดได้ — แถบด้านบนยังอยู่)
   }catch(_){ /* ออฟไลน์อยู่ ไม่เป็นไร */ }
 }
 function applyUpdate(){
   $('updBar').classList.remove('show');
+  LS.set('pur.updFrom', APP_VERSION);                              // v2.58 เปิดใหม่แล้วขึ้น "อัปเดตเรียบร้อย"
   // ใส่ ?v= ท้าย URL บังคับให้โหลดไฟล์ใหม่จริง (reload เฉยๆ บน iOS ยังได้ของเก่าในแคช)
   location.replace(location.pathname + '?v=' + Date.now());
+}
+
+// ═══ v2.58 ป๊อปอัปของใหม่ — ก่อนอัปเดต ("ของใหม่มาแล้ว") และหลังอัปเดต ("อัปเดตเรียบร้อย") ═══
+function parseWhatsNew(html){
+  const m = /<script type="application\/json" id="whatsNew">([\s\S]*?)<\/script>/.exec(html || '');
+  try{ return m ? (JSON.parse(m[1]).items || []) : []; }catch(_){ return []; }
+}
+const wnBusy = () => $('tourOv') || $('rmdOv') || $('wnOv') || $('modal')?.classList.contains('open') || document.querySelector('.modal-overlay.open');
+function showWhatsNew(kind, ver, items, tries = 0){
+  if(!started) return;
+  if(wnBusy()){ if(tries < 60) setTimeout(() => showWhatsNew(kind, ver, items, tries + 1), 2500); return; }
+  const before = kind === 'before';
+  const list = (items || []).slice(0, 8).map((x, i) => `<div class="wn-it" style="animation-delay:${.25 + i * .09}s"><div class="e" style="animation-delay:${i * .3}s">${esc(x[0])}</div><div><b>${esc(x[1])}</b><span>${esc(x[2] || '')}</span></div></div>`).join('');
+  const sparks = [[8, 18, 0], [86, 14, .5], [16, 70, 1], [82, 62, .2], [50, 8, .8]].map(([l, t, d]) => `<i class="spark" style="left:${l}%;top:${t}%;animation-delay:${d}s">✦</i>`).join('');
+  const ov = document.createElement('div'); ov.id = 'wnOv';
+  ov.innerHTML = `<div class="wn-card" role="dialog" aria-modal="true">
+    <div class="wn-top">${sparks}<div class="wn-ico ${before ? 'go' : ''}">${before ? '🚀' : '🎉'}</div>
+      <div class="wn-h">${before ? 'ของใหม่มาแล้ว!' : 'อัปเดตเรียบร้อย!'}</div>
+      <div class="wn-sub">${before ? 'มีฟีเจอร์ใหม่รอให้ลองเพียบ อัปเดตแป๊บเดียวเสร็จ' : 'ตอนนี้ใช้เวอร์ชันล่าสุดแล้ว ไปลองของใหม่กันเลย 👇'}</div>
+      <div class="wn-ver">v${esc(ver)}</div></div>
+    ${list ? `<div class="wn-list">${list}</div>` : '<div class="wn-list txt-sm txt-muted" style="padding:16px">ปรับปรุงให้ใช้งานลื่นขึ้น</div>'}
+    <div class="wn-foot">${before
+      ? `<button class="btn btn-outline" onclick="closeWhatsNew()">ไว้ทีหลัง</button><button class="btn btn-gold wn-go" onclick="closeWhatsNew();applyUpdate()">🚀 อัปเดตเลย</button>`
+      : `<button class="btn btn-outline" onclick="closeWhatsNew();startTour(true)">▶ พาชมทีละจุด</button><button class="btn btn-gold wn-go" onclick="closeWhatsNew()">ลองเลย ✨</button>`}</div></div>`;
+  ov.addEventListener('click', e => { if(e.target === ov) closeWhatsNew(); });
+  document.body.appendChild(ov);
+  if(!before) wnConfetti(ov);
+}
+function closeWhatsNew(){ $('wnOv')?.remove(); }
+function wnConfetti(ov){
+  if(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+  const colors = ['#c9a84c', '#e8c86a', '#3f86ff', '#ff6b8a', '#4cc38a', '#ffffff'];
+  for(let i = 0; i < 70; i++){
+    const c = document.createElement('i'); c.className = 'cf';
+    c.style.left = Math.random() * 100 + '%'; c.style.background = colors[i % colors.length];
+    c.style.animationDuration = (2.2 + Math.random() * 2.2) + 's'; c.style.animationDelay = (Math.random() * .8) + 's';
+    c.style.transform = `rotate(${Math.random() * 360}deg)`; if(i % 3 === 0){ c.style.width = '7px'; c.style.height = '7px'; c.style.borderRadius = '50%'; }
+    ov.appendChild(c); setTimeout(() => c.remove(), 5200);
+  }
+}
+// เปิดแอพรุ่นใหม่ครั้งแรก: กดอัปเดตจากรุ่นเก่า หรือเครื่องที่เคยใช้แล้วได้รุ่นใหม่เอง → "อัปเดตเรียบร้อย" ครั้งเดียวต่อเวอร์ชัน (คนใหม่เห็นทัวร์แทน)
+function maybeShowUpdated(){
+  const from = LS.get('pur.updFrom'), seen = LS.get('pur.newSeen');
+  LS.set('pur.newSeen', APP_VERSION); LS.set('pur.updFrom', '');
+  const used = !!(from || seen || WN_PRIOR);
+  if(!used || seen === APP_VERSION) return;
+  setTimeout(() => showWhatsNew('after', APP_VERSION, parseWhatsNew(document.head.innerHTML)), 1800);
 }
 
 // ── แจ้งเตือนตอนไม่ได้เปิดแอพ (Web Push) ──────────────────────
@@ -5457,7 +5750,7 @@ let peopleQ = '';
 function renderSettings(){
   if(view !== 'set') return;
   const sup = isSup();
-  $('setContent').innerHTML = linkCardHtml() + notiCardHtml() + (isAdmin() ? accountsCardHtml() + accessCardHtml() + lineSheetCardHtml() : '') + (sup ? teamCardHtml() + peopleCardHtml() + hoursCardHtml() : '') + quickCardHtml() + tagsCardHtml() + (sup ? whCardHtml() + (acct?.slug === 'purchase' ? prodCardHtml() : '') + ackCardHtml() + quotaCardHtml() : '') + (isAdmin() ? adminCardHtml() : '') + (sup ? aboutCardHtml() : '');   // v2.22 พนักงานเห็นแค่ของตัวเอง (ผูก LINE · แจ้งเตือน · ข้อความตอบด่วน · v2.41 + ป้ายสถานะแชท) · v2.41 การ์ดแท็กสินค้าเฉพาะบัญชีจัดซื้อ
+  $('setContent').innerHTML = helpCardHtml() + linkCardHtml() + notiCardHtml() + (sup ? briefCardHtml() : '') + (isAdmin() ? accountsCardHtml() + accessCardHtml() + lineSheetCardHtml() : '') + (sup ? teamCardHtml() + peopleCardHtml() + hoursCardHtml() : '') + quickCardHtml() + tagsCardHtml() + (sup ? whCardHtml() + (acct?.slug === 'purchase' ? prodCardHtml() : '') + ackCardHtml() + quotaCardHtml() : '') + (isAdmin() ? adminCardHtml() : '') + (sup ? aboutCardHtml() : '');   // v2.22 พนักงานเห็นแค่ของตัวเอง (ผูก LINE · แจ้งเตือน · ข้อความตอบด่วน · v2.41 + ป้ายสถานะแชท) · v2.41 การ์ดแท็กสินค้าเฉพาะบัญชีจัดซื้อ
   if(sup && peopleOpen) renderPeopleRows();
   if(sup && oaAdmins === null && !DEMO) loadOaAdmins();
 }
@@ -6217,7 +6510,7 @@ function aboutCardHtml(){
 function setView(v){
   view = v; document.body.classList.remove('hdr-hidden');
   document.querySelectorAll('.tab-btn,.bni').forEach(b => b.classList.toggle('active', b.dataset.v === v));
-  const ids = { chat:'viewChat', dash:'viewDash', blast:'viewBlast', set:'viewSet' };
+  const ids = { chat:'viewChat', dash:'viewDash', blast:'viewBlast', send:'viewSend', set:'viewSet' };
   document.querySelectorAll('.view').forEach(s => s.classList.toggle('active', s.id === ids[v]));
   LS.set('pur.view', v); tipHide();
   // กลับมาหน้าแชท → แชทที่เปิดค้างไว้มีข้อความเข้าระหว่างอยู่หน้าอื่น ค่อยนับว่าอ่านตอนนี้
@@ -6225,6 +6518,7 @@ function setView(v){
   if(v === 'chat') setTimeout(markActiveRead, 0);
   if(v === 'dash'){ fillPersonDD(); if(!dashLoadedOnce) loadDash(); else renderDash(); }
   if(v === 'blast') renderBlast();
+  if(v === 'send') loadSendApp();
   if(v === 'set') renderSettings();
   updateBackToTop();
 }
@@ -6843,6 +7137,8 @@ async function showApp(){
   document.addEventListener('visibilitychange', () => { if(!document.hidden) checkUpdate(); });   // แจ้งเตือน: โหลดค่าตั้ง (scope ขึ้นกับสิทธิ์) แล้วเริ่มเฝ้า SLA
   setView((v => v === 'blast' ? 'chat' : v)(LS.get('pur.view')) || 'chat');   // v2.57 หน้าบรอดแคสต์ในแอพไม่มีทางเข้าแล้ว
   setTimeout(() => showRemind('open'), 1500);                      // v2.31 ป๊อปอัป "อย่าลืมตอบแชทนะ"
+  if(!DEMO) maybeShowUpdated();                                     // v2.58 "อัปเดตเรียบร้อย" + ของใหม่
+  setTimeout(maybeStartTour, 3000);                                // v2.58 สอนใช้ครั้งแรก (รอป๊อปอัปเตือนปิดก่อน)
   // ตัวเลข "รอมานาน" เดินตามเวลาจริง
   // ตัวเลข "รอมานาน" เดินตามเวลาจริง — ข้ามตอนแอพถูกซ่อน ไม่มีใครดูอยู่ก็ไม่ต้องเปลืองแรงเครื่อง
   setInterval(() => {
