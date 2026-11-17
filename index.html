@@ -9,18 +9,13 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.58">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.59">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.58">
-<title>Rattana One Chat v2.58</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.59">
+<title>Rattana One Chat v2.59</title>
 <script type="application/json" id="whatsNew">{"items":[
-["⏰","ตามคำสัญญาให้อัตโนมัติ","พิมพ์ \"เดี๋ยวเช็คให้นะคะ\" ระบบจำไว้ ถึงเวลาแล้วยังเงียบ = เตือนทันที"],
-["🔥","แชทด่วนขึ้นบนสุด","ลูกค้าเร่งหรือไม่พอใจ เห็นก่อนใคร"],
-["🏆","ตอบไวประจำสัปดาห์","ประกาศทุกวันศุกร์ พร้อมป้ายเท่ๆ ข้างชื่อ"],
-["🌅","สรุปเช้าเข้า LINE หัวหน้า","ทุกเช้า 08:00 ไม่ต้องเปิดแอพก็รู้ภาพรวม"],
-["🎙️","ถอดข้อความเสียง","ลูกค้าส่งเสียงมา อ่านเป็นตัวหนังสือได้เลย"],
-["📣","บรอดแคสต์เปิดในแอพ","ส่ง LINE หาหลายคนได้ ไม่ต้องสลับเว็บ"],
-["📖","ทัวร์สอนใช้","พาชมทีละจุด ดูซ้ำได้ที่ ตั้งค่า"]
+["🔐","ล็อกอินไม่เด้งหลุด","แก้อาการล็อกอินแล้วเด้งกลับหน้าล็อกอินใน Chrome"],
+["✨","ปรับให้ลื่นขึ้น","เก็บข้อมูลการเข้าใช้แยกจากแอพอื่นของบริษัท"]
 ]}</script>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1209,7 +1204,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.58 · 16/11/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.59 · 17/11/2569</div>
   </div>
 </div>
 
@@ -1259,7 +1254,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.58</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.59</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1557,7 +1552,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.58 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.59 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1617,6 +1612,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.56 (07/11/2569): ข้อความตอบกลับอัตโนมัติของ OA (bizId "__AUTO_RESPONSE") ขึ้นป้าย "ระบบตอบกลับอัตโนมัติ (OA)" ไม่ใช่ "แอดมิน OA" — ฐานข้อมูลไม่นับว่าตอบ/ไม่ล้างยังไม่อ่าน (pur-auto-response.sql) · ⭐ ป้ายของฉัน ป้ายสถานะแชทส่วนตัว เห็นคนเดียว (pur-my-tags.sql)
 //  v2.57 (11/11/2569): ปุ่มบรอดแคสต์ (แท็บบน + เมนูล่าง) เปิดแอพ Rattana ส่ง LINE (rattana-budget-letter.html) แท็บใหม่ แทนหน้าบรอดแคสต์ในแอพ · ค้างหน้า blast เดิม → กลับหน้าแชท
 //  v2.58 (16/11/2569): บรอดแคสต์ = Rattana ส่ง LINE ฝังในแอพ · ทัวร์สอนใช้ครั้งแรก · ⏰ ตามคำสัญญา · 🔥 แชทด่วนขึ้นบนสุด · 🏆 ตอบไวประจำสัปดาห์ · 🌅 สรุปเช้า (ตั้งค่า) · 🎙️ ถอดเสียง · ป๊อปอัปของใหม่ก่อน/หลังอัปเดต (pur-v258-extras.sql · pur-brief · pur-push v2.4)
+//  v2.59 (17/11/2569): เก็บล็อกอินใน IndexedDB ของแอพเอง (+ localStorage สำรอง) — แก้ล็อกอินแล้วเด้งกลับหน้าล็อกอินใน Chrome เมื่อ localStorage ของโดเมนบริษัทเต็ม · บันทึกไม่ได้ = หน้าล็อกอินบอกเหตุ
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1684,7 +1680,31 @@ const FN_REGION = 'ap-northeast-1';
 const BUCKET  = 'pur-media';      // bucket ส่วนตัว เก็บรูป-ไฟล์ (เปิดผ่านลิงก์ลงนามเท่านั้น)
 const MARK    = 'data:image/png;base64,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';
 const DEMO    = new URLSearchParams(location.search).get('demo') === '1';   // ?demo=1 = ข้อมูลสมมติ ไม่ต่อเน็ต
-const sb      = DEMO ? null : supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+// v2.59 ที่เก็บล็อกอินทนทาน — แก้ "ล็อกอินแล้วเด้งกลับหน้าล็อกอิน" ใน Chrome (เป็นบ่อย)
+//   แอพอยู่โดเมนเดียวกับแอพอื่นของบริษัททั้งชุด (rattanaphaiboon.github.io/app/…) → ใช้ localStorage ก้อนเดียวกัน (~5MB ต่อโดเมน)
+//   แอพอื่นเก็บข้อมูลเยอะจนเต็ม → บันทึกล็อกอินไม่ลง (QuotaExceededError เงียบๆ) → กลับจาก Google แล้วไม่มีล็อกอิน = วนหน้าล็อกอิน · Edge ไม่ค่อยเป็นเพราะไม่ได้เปิดแอพอื่นไว้
+//   ตอนนี้เก็บล็อกอินใน IndexedDB ของแอพเอง (พื้นที่แยก ใหญ่กว่ามาก) + localStorage เป็นสำรอง · อ่าน IndexedDB ก่อน ไม่มีค่อยถอยไป localStorage (ล็อกอินเดิมไม่หลุด)
+const authStore = (() => {
+  let dbp = null;
+  const open = () => dbp || (dbp = new Promise((res, rej) => {
+    try{ const r = indexedDB.open('onechat-auth', 1); r.onupgradeneeded = () => r.result.createObjectStore('kv'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }
+    catch(e){ rej(e); }
+  }));
+  const run = (mode, fn) => open().then(db => new Promise((res, rej) => {
+    const t = db.transaction('kv', mode), q = fn(t.objectStore('kv'));
+    t.oncomplete = () => res(q ? q.result : undefined); t.onerror = () => rej(t.error); t.onabort = () => rej(t.error);
+  }));
+  return {
+    async getItem(k){ try{ const v = await run('readonly', st => st.get(k)); if(v != null) return v; }catch(_){} try{ return localStorage.getItem(k); }catch(_){ return null; } },
+    async setItem(k, v){
+      let idbOk = false; try{ await run('readwrite', st => st.put(v, k)); idbOk = true; }catch(_){}
+      try{ localStorage.setItem(k, v); }catch(_){ try{ localStorage.removeItem(k); }catch(_){} if(!idbOk) authStoreFull = true; }   // ค่าเก่าค้างใน localStorage ห้ามเหลือ (อ่านผิดตัว)
+    },
+    async removeItem(k){ try{ await run('readwrite', st => st.delete(k)); }catch(_){} try{ localStorage.removeItem(k); }catch(_){} },
+  };
+})();
+let authStoreFull = false;          // ทั้ง IndexedDB และ localStorage บันทึกไม่ได้ → บอกผู้ใช้ที่หน้าล็อกอิน
+const sb      = DEMO ? null : supabase.createClient(SUPABASE_URL, SUPABASE_ANON, { auth:{ storage:authStore, persistSession:true, autoRefreshToken:true, detectSessionInUrl:true } });
 
 // ── STATE ──
 let me = null;                        // {email,nick,name,role} — role = บทบาทในบัญชีที่เปิดอยู่ ('admin' = ผู้ดูแลทั้งระบบ)
@@ -6537,7 +6557,9 @@ async function doLogin(){
   if(error){ showLogin(); err.textContent = 'เข้าสู่ระบบไม่สำเร็จ: ' + error.message; }
 }
 async function doLogout(){ if(DEMO){ location.href = location.pathname; return; } try{ await sb.auth.signOut({ scope:'local' }); }catch(_){} location.replace(location.origin + location.pathname); }   // v2.25 เฉพาะเครื่องนี้ (เดิม global = ทุกเครื่องหลุด)
-function showLogin(){ const btn = $('lgBtn'); btn.disabled = false; btn.querySelector('span').textContent = 'เข้าสู่ระบบด้วย Google'; clearTimeout(gateRetryT); $('loginGate').classList.remove('hide', 'boot', 'retry'); }
+function showLogin(){ const btn = $('lgBtn'); btn.disabled = false; btn.querySelector('span').textContent = 'เข้าสู่ระบบด้วย Google'; clearTimeout(gateRetryT); $('loginGate').classList.remove('hide', 'boot', 'retry');
+  if(authStoreFull && !$('lgErr').textContent) $('lgErr').innerHTML = 'เบราว์เซอร์นี้บันทึกการล็อกอินไม่ได้ (พื้นที่เก็บข้อมูลเต็ม หรือเปิดโหมดไม่ระบุตัวตน/บล็อกคุกกี้) — ลองเปิดด้วย Chrome หน้าต่างปกติ หรือ Edge';   // v2.59
+}
 // v2.25 เชื่อมต่อไม่ได้ตอนเปิดแอพ (เน็ตยังไม่มาตอนปลุกเครื่อง/มือถือ · เซิร์ฟเวอร์สะดุด) → ไม่ออกจากระบบ แค่รอแล้วลองใหม่เอง
 // เดิม signOut() ทันที = ต้องล็อกอินใหม่ และ signOut ค่าเริ่มต้นเป็น global → เครื่องอื่นของคนนั้นหลุดตามด้วย
 let gateRetryT = null, gateRetryN = 0;
