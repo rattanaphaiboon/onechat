@@ -9,13 +9,13 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.62">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.63">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.62">
-<title>Rattana One Chat v2.62</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.63">
+<title>Rattana One Chat v2.63</title>
 <script type="application/json" id="whatsNew">{"items":[
-["🛟","โหมดชั่วคราวครบขึ้น","ส่งรูป ไฟล์ สติกเกอร์ ข้อความตอบด่วน และกดเสร็จแล้วได้"],
-["👤","รูปโปรไฟล์แชท","เห็นรูปลูกค้าและกลุ่มในโหมดชั่วคราว"]
+["⚡","โหมดชั่วคราวเร็วขึ้น","ข้อความใหม่ขึ้นภายในไม่กี่วินาที"],
+["💬","คำตอบจาก OA Manager","คำตอบที่พิมพ์ใน OA Manager ขึ้นในโหมดชั่วคราว (ต้องอัปเดตส่วนขยาย 3.6.0)"]
 ]}</script>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1207,7 +1207,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div id="liteOffer" style="margin-top:10px"><button class="btn btn-outline btn-sm" type="button" onclick="liteSetup()">🛟 ใช้โหมดชั่วคราว (Apps Script)</button></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.62 · 24/11/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.63 · 24/11/2569</div>
   </div>
 </div>
 
@@ -1257,7 +1257,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.62</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.63</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1555,7 +1555,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.62 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.63 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1619,6 +1619,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.60 (24/11/2569): ลด Egress หลังโปรเจกต์ถูกระงับ — realtime แบบสัญญาณเบา pur_rt_pings (pur-rt-pings.sql) · รายการแชทเก็บในเครื่อง (IndexedDB) ดึงเฉพาะที่เปลี่ยน · เปิดแชทโหลด 50 ข้อความ · ถอดเสียงขึ้นทันทีในแชทที่เปิดอยู่ · ผูก LINE เช็คทุก 6 วิ
 //  v2.61 (24/11/2569): 🛟 โหมดชั่วคราว (One Chat Lite บน Apps Script + Google Sheet) สลับได้ที่หน้าล็อกอิน/แถบทอง — อ่าน/ตอบแชท LINE 3 บัญชีตอน Supabase ปิด · หน้าล็อกอินเช็คว่าระบบหลักถูกระงับไหม
 //  v2.62 (24/11/2569): โหมดชั่วคราว (Lite v1.3) ส่งรูป/ไฟล์/สติกเกอร์ · ข้อความตอบด่วน · เสร็จแล้ว/ไม่ต้องตอบ · รูปโปรไฟล์แชท · สติกเกอร์ขาเข้าแสดงเป็นรูป
+//  v2.63 (24/11/2569): โหมดชั่วคราวเช็คการเปลี่ยนแปลงทุก 4 วินาที (Lite v1.4 apiStamp) แชทใหม่ขึ้นเร็วขึ้น
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1783,17 +1784,24 @@ function liteTools(c){
   return `<button class="tool-btn ${c.status === 'resolved' ? 'done' : ''}" onclick="toggleResolve()">${c.status === 'resolved' ? '✓ เสร็จแล้ว' : '✓ ทำเครื่องหมายเสร็จ'}</button>`
        + (c.awaiting_since ? `<button class="tool-btn danger" onclick="dismissWait()">🚫 ไม่ต้องตอบ</button>` : '');
 }
+// v2.63 เช็คตราเวลาการเปลี่ยนแปลง (apiStamp — อ่านค่าเดียว) ทุก 4 วินาที · เปลี่ยน = โหลดรายการแชท + ข้อความแชทที่เปิดอยู่ · ไม่เปลี่ยน 60 วิ = โหลดกันพลาด
+let liteStamp = 0, liteFullAt = 0, liteBusy = false;
 function startLitePoll(){
   clearInterval(litePollT);
   litePollT = setInterval(async () => {
-    if(document.hidden || !acct) return;
+    if(document.hidden || !acct || liteBusy) return;
+    liteBusy = true;
     try{
+      const t = await liteApi('stamp').catch(() => 0);
+      if(t ? (t === liteStamp && Date.now() - liteFullAt < 60000) : Date.now() - liteFullAt < 12000) return;   // Lite รุ่นเก่า (ไม่มี stamp) = โหลดทุก 12 วิแบบเดิม
+      liteStamp = t; liteFullAt = Date.now();
       await liteLoadChats();
       const id = activeId; if(!id) return;
       const list = await liteLoadMsgs(id);
       if(activeId === id && list.length !== liteMsgN[id]){ liteMsgN[id] = list.length; renderMsgs(list); }
     }catch(e){ console.warn('lite poll:', e.message); }
-  }, 12000);
+    finally{ liteBusy = false; }
+  }, 4000);
 }
 // v2.59 ที่เก็บล็อกอินทนทาน — แก้ "ล็อกอินแล้วเด้งกลับหน้าล็อกอิน" ใน Chrome (เป็นบ่อย)
 //   แอพอยู่โดเมนเดียวกับแอพอื่นของบริษัททั้งชุด (rattanaphaiboon.github.io/app/…) → ใช้ localStorage ก้อนเดียวกัน (~5MB ต่อโดเมน)
