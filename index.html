@@ -9,13 +9,14 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.59">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.60">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.59">
-<title>Rattana One Chat v2.59</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.60">
+<title>Rattana One Chat v2.60</title>
 <script type="application/json" id="whatsNew">{"items":[
-["🔐","ล็อกอินไม่เด้งหลุด","แก้อาการล็อกอินแล้วเด้งกลับหน้าล็อกอินใน Chrome"],
-["✨","ปรับให้ลื่นขึ้น","เก็บข้อมูลการเข้าใช้แยกจากแอพอื่นของบริษัท"]
+["⚡","แอพเบาขึ้น ประหยัดเน็ต","จำรายการแชทไว้ในเครื่อง เปิดแอพแล้วโหลดเฉพาะที่เปลี่ยน"],
+["🎙️","ถอดเสียงขึ้นทันที","ตัวหนังสือจากข้อความเสียงขึ้นใต้คลิปเองเมื่อถอดเสร็จ"],
+["💬","เปิดแชทไวขึ้น","โหลดข้อความล่าสุดก่อน เลื่อนขึ้นเพื่อดูเก่ากว่า"]
 ]}</script>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1204,7 +1205,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div class="lg-err" id="lgErr"></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.59 · 17/11/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.60 · 24/11/2569</div>
   </div>
 </div>
 
@@ -1254,7 +1255,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.59</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.60</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1552,7 +1553,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.59 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.60 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1613,6 +1614,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.57 (11/11/2569): ปุ่มบรอดแคสต์ (แท็บบน + เมนูล่าง) เปิดแอพ Rattana ส่ง LINE (rattana-budget-letter.html) แท็บใหม่ แทนหน้าบรอดแคสต์ในแอพ · ค้างหน้า blast เดิม → กลับหน้าแชท
 //  v2.58 (16/11/2569): บรอดแคสต์ = Rattana ส่ง LINE ฝังในแอพ · ทัวร์สอนใช้ครั้งแรก · ⏰ ตามคำสัญญา · 🔥 แชทด่วนขึ้นบนสุด · 🏆 ตอบไวประจำสัปดาห์ · 🌅 สรุปเช้า (ตั้งค่า) · 🎙️ ถอดเสียง · ป๊อปอัปของใหม่ก่อน/หลังอัปเดต (pur-v258-extras.sql · pur-brief · pur-push v2.4)
 //  v2.59 (17/11/2569): เก็บล็อกอินใน IndexedDB ของแอพเอง (+ localStorage สำรอง) — แก้ล็อกอินแล้วเด้งกลับหน้าล็อกอินใน Chrome เมื่อ localStorage ของโดเมนบริษัทเต็ม · บันทึกไม่ได้ = หน้าล็อกอินบอกเหตุ
+//  v2.60 (24/11/2569): ลด Egress หลังโปรเจกต์ถูกระงับ — realtime แบบสัญญาณเบา pur_rt_pings (pur-rt-pings.sql) · รายการแชทเก็บในเครื่อง (IndexedDB) ดึงเฉพาะที่เปลี่ยน · เปิดแชทโหลด 50 ข้อความ · ถอดเสียงขึ้นทันทีในแชทที่เปิดอยู่ · ผูก LINE เช็คทุก 6 วิ
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1961,15 +1963,47 @@ async function loadMyTags(){
   }catch(e){ console.warn('my tags:', e.message); myTags = []; myChatTags = new Map(); }
   renderTagChips(); renderList(); if(activeId && chatById.get(activeId)) renderChatHeader(chatById.get(activeId));
 }   // v2.45 สลับบัญชีระหว่างรอ = ทิ้งผล
+// v2.60 ลด Egress: รายการแชททั้งบัญชี (จัดซื้อ ~0.9 MB) เดิมโหลดเต็มทุกครั้งที่เปิดแอพ/สลับบัญชี/รีเฟรช — มือถือเปิดใหม่วันละหลายสิบรอบต่อคน
+//   ตอนนี้เก็บสำเนาไว้ในเครื่อง (IndexedDB 'onechat-cache') → เปิดแอพ = ขอเฉพาะแชทที่เปลี่ยนหลังสำเนา + รายการ id (ไว้ลบแชทที่ถูกรวม/ลบ)
+//   สำเนาเก่ากว่า 3 วัน / ไม่มี / ผิดรูปแบบ = โหลดเต็มแบบเดิม
+const chatCache = (() => {
+  let dbp = null;
+  const open = () => dbp || (dbp = new Promise((res, rej) => {
+    try{ const r = indexedDB.open('onechat-cache', 1); r.onupgradeneeded = () => r.result.createObjectStore('kv'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }catch(e){ rej(e); }
+  }));
+  const run = (mode, fn) => open().then(db => new Promise((res, rej) => { const t = db.transaction('kv', mode), q = fn(t.objectStore('kv')); t.oncomplete = () => res(q ? q.result : undefined); t.onerror = () => rej(t.error); t.onabort = () => rej(t.error); }));
+  const key = aid => `chats:${aid}:${me?.email || ''}`;      // แยกตามคน (RLS ของแต่ละคนเห็นแชทไม่เท่ากัน)
+  let saveT = null;
+  return {
+    async get(aid){ try{ const v = await run('readonly', st => st.get(key(aid))); return v && Array.isArray(v.rows) && v.at > Date.now() - 3 * 86400e3 ? v : null; }catch(_){ return null; } },
+    save(aid){ clearTimeout(saveT); saveT = setTimeout(() => { if(acct?.id !== aid || !chatSync) return; const v = { at:Date.now(), sync:chatSync, rows:chats }; run('readwrite', st => st.put(v, key(aid))).catch(() => {}); }, 3000); },
+  };
+})();
 async function loadChats(){
   // ถ้ามีเหตุการณ์ realtime ค้างรอวาดอยู่ (schedulePaint 250ms) ให้ใช้ภาพ "ก่อนเหตุการณ์" ของมัน
   // ไม่งั้นภาพที่ถ่ายตรงนี้มีข้อความใหม่อยู่แล้ว + บรรทัดล้าง paintSnap ข้างล่าง = การแจ้งเตือนของข้อความนั้นหาย
   const before = paintSnap || snapshot();
   const aid = acct.id;
-  const rows = await fetchAll('pur_chats', q => q.eq('account_id', aid).order('last_message_at', { ascending:false, nullsFirst:false }));
+  let rows = null;
+  const cached = DEMO ? null : await chatCache.get(aid);
+  if(cached){
+    try{
+      // แชทที่เปลี่ยนหลังสำเนา (ถอยเผื่อ 1 นาที) + id ทั้งบัญชี (แถวละ ~45 ไบต์) ไว้ตัดแชทที่หายไป
+      const since = new Date(tsOf(cached.sync) - SYNC_OVERLAP_MS).toISOString();
+      const [delta, ids] = await Promise.all([
+        fetchAll('pur_chats', q => q.eq('account_id', aid).gt('updated_at', since)),
+        (async () => { const out = []; for(let from = 0;; from += 1000){ const { data, error } = await sb.from('pur_chats').select('id').eq('account_id', aid).order('id').range(from, from + 999); if(error) throw new Error(error.message); out.push(...(data || [])); if(!data || data.length < 1000) break; } return out; })(),
+      ]);
+      const keep = new Set(ids.map(r => r.id)), map = new Map(cached.rows.filter(r => keep.has(r.id)).map(r => [r.id, r]));
+      delta.forEach(r => map.set(r.id, r));
+      rows = keep.size === map.size ? [...map.values()].sort((a, b) => tsOf(b.last_message_at) - tsOf(a.last_message_at)) : null;   // มี id ที่สำเนาไม่มี (ไม่น่าเกิด) = โหลดเต็ม
+    }catch(e){ console.warn('chat cache:', e.message); rows = null; }
+  }
+  if(!rows) rows = await fetchAll('pur_chats', q => q.eq('account_id', aid).order('last_message_at', { ascending:false, nullsFirst:false }));
   if(acct?.id !== aid) return;                               // v2.45 สลับบัญชีระหว่างโหลด → ไม่เอาแชทบัญชีเก่ามาทับ
   chats = rows; chatById = new Map(rows.map(r => [r.id, r]));
   chatSync = maxUpdated(rows); lastFullChats = Date.now();
+  if(!DEMO) chatCache.save(aid);
   if(typeof paintSnap !== 'undefined') paintSnap = null;
   detectNew(before); renderList(); updateBadges();
   if(activeId && chatById.get(activeId)) renderChatHeader(chatById.get(activeId));
@@ -2019,6 +2053,7 @@ async function syncChats(){
   const before = paintSnap || snapshot();
   for(const r of changed){ const i = chats.findIndex(c => c.id === r.id); if(i >= 0) chats[i] = r; else chats.push(r); chatById.set(r.id, r); }
   chats.sort((a, b) => tsOf(b.last_message_at) - tsOf(a.last_message_at));   // ลำดับเดียวกับ loadChats (ล่าสุดก่อน ไม่มีเวลาไว้ท้าย)
+  chatCache.save(acctId);                                         // v2.60
   if(typeof paintSnap !== 'undefined') paintSnap = null;
   detectNew(before); renderList(); updateBadges();
   if(activeId && chatById.get(activeId)) renderChatHeader(chatById.get(activeId));
@@ -2032,7 +2067,7 @@ function activeMissingMsgs(){
   return tsOf(c.last_message_at) > newest + 1000;
 }
 // ข้อความโหลดทีละหน้าแบบ LINE: เปิดแชทเห็นข้อความล่าสุดด้านล่าง เลื่อนขึ้นบนสุดเพื่อโหลดข้อความเก่ากว่า
-const MSG_PAGE = 120;
+const MSG_PAGE = 50;        // v2.60 ลด Egress: เดิม 120 (~150 KB ต่อการเปิดแชท) · เลื่อนขึ้นบนสุดโหลดเพิ่มทีละ 50
 const byTime = (a, b) => (Date.parse(a.sent_at) - Date.parse(b.sent_at)) || String(a.created_at || '').localeCompare(String(b.created_at || ''));
 async function fetchMsgPage(chatId, before){
   let q = sb.from('pur_messages').select('*').eq('chat_id', chatId);
@@ -3987,21 +4022,47 @@ function setupRealtime(){
     if(activeId === r.id) paintHeader = true;
     schedulePaint();
   };
-  rtChannels.push(sb.channel('pur-chats-' + acct.id)
-    .on('postgres_changes', { event:'INSERT', schema:'public', table:'pur_chats', filter:f }, onChat)
-    .on('postgres_changes', { event:'UPDATE', schema:'public', table:'pur_chats', filter:f }, onChat)
-    .on('postgres_changes', { event:'DELETE', schema:'public', table:'pur_chats' }, onChat)
+  // v2.60 ลด Egress (Realtime = 64% ของ Egress ทั้งโปรเจกต์): เดิมรับทั้งแถวของ pur_chats/pur_messages/pur_people ทุกครั้งที่เปลี่ยน
+  //   (แชทเปลี่ยน ~11 ครั้งต่อข้อความ × ทุกเครื่องที่เปิดอยู่) → ตอนนี้รับแค่สัญญาณ "แชทนี้เปลี่ยน" (pur_rt_pings ~100 ไบต์)
+  //   แล้วรวบดึงเฉพาะแชทที่เปลี่ยนทีเดียว · ข้อความดึงเฉพาะแชทที่เปิดอยู่ · ผลส่งเข้า onChat/onMsgInsert/onMsgUpdate เดิม (แจ้งเตือน/ป้ายทำงานเหมือนเดิม)
+  rtOnChat = onChat;
+  rtChannels.push(sb.channel('pur-pings-' + acct.id)
+    .on('postgres_changes', { event:'INSERT', schema:'public', table:'pur_rt_pings', filter:f }, p => onPing(p.new))
+    .on('postgres_changes', { event:'UPDATE', schema:'public', table:'pur_rt_pings', filter:f }, p => onPing(p.new))
     .subscribe());
-
-  rtChannels.push(sb.channel('pur-msgs-' + acct.id)
-    .on('postgres_changes', { event:'INSERT', schema:'public', table:'pur_messages', filter:f }, p => onMsgInsert(p.new))
-    .on('postgres_changes', { event:'UPDATE', schema:'public', table:'pur_messages', filter:f }, p => onMsgUpdate(p.new))
-    .subscribe());
-
-  rtChannels.push(sb.channel('pur-people-' + Date.now().toString(36)).on('postgres_changes', { event:'*', schema:'public', table:'pur_people' }, p => {
-    if(p.new?.line_user_id){ people.set(p.new.line_user_id, p.new); refreshPeopleCards(); }
-  }).subscribe());
 }
+let rtOnChat = null;
+const pingChats = new Set(); let pingChatT = null, pingMsgT = null;
+function onPing(r){
+  if(!r?.chat_id || (acct && r.account_id !== acct.id)) return;
+  if(r.kind === 'x'){ rtOnChat?.({ eventType:'DELETE', old:{ id:r.chat_id } }); return; }
+  if(r.kind === 'm'){ if(r.chat_id === activeId){ clearTimeout(pingMsgT); pingMsgT = setTimeout(flushPingMsgs, 700); } return; }
+  pingChats.add(r.chat_id);
+  if(!pingChatT) pingChatT = setTimeout(flushPingChats, document.hidden ? 15000 : 1200);   // ซ่อนอยู่ = รวบนานขึ้น (ยังได้แจ้งเตือน)
+}
+async function flushPingChats(){
+  pingChatT = null; if(!pingChats.size || !acct) return;
+  const ids = [...pingChats].slice(0, 100), aid = acct.id; ids.forEach(id => pingChats.delete(id));
+  try{
+    const { data, error } = await sb.from('pur_chats').select('*').in('id', ids);
+    if(error) throw error; if(acct?.id !== aid) return;
+    (data || []).forEach(r => rtOnChat?.({ eventType:'UPDATE', new:r }));
+    const m = maxUpdated(data || []); if(tsOf(m) > tsOf(chatSync)) chatSync = m;
+    chatCache.save(aid);
+  }catch(e){ console.warn('ping chats:', e.message); ids.forEach(id => pingChats.add(id)); }
+  if(pingChats.size) pingChatT = setTimeout(flushPingChats, 1200);
+}
+// ข้อความในแชทที่เปิดอยู่: ดึง 30 ข้อความล่าสุด แล้วรวมเข้ากับที่มี (ใหม่ = แทรก · มีแล้ว = อัปเดตสถานะ/การ์ด/ถอดเสียง)
+async function flushPingMsgs(){
+  const id = activeId; if(!id) return;
+  try{
+    const { data, error } = await sb.from('pur_messages').select('*').eq('chat_id', id).order('sent_at', { ascending:false }).limit(30);
+    if(error) throw error; if(activeId !== id) return;
+    const have = new Set((msgCache[id] || []).map(x => x.id));
+    (data || []).reverse().forEach(m => have.has(m.id) ? onMsgUpdate(m) : onMsgInsert(m));
+  }catch(e){ console.warn('ping msgs:', e.message); }
+}
+document.addEventListener('visibilitychange', () => { if(!document.hidden && pingChats.size){ clearTimeout(pingChatT); flushPingChats(); } });
 function onMsgInsert(m){
   if(!m || m.chat_id !== activeId) return;
   const list = msgCache[activeId] || (msgCache[activeId] = []);
@@ -4047,7 +4108,8 @@ function onMsgUpdate(m){
   if(!x) return;
   // รวมกรณีไฟล์แนบที่เพิ่งดึงกลับมาจาก LINE (ป้ายข้อความ → รูป/ไฟล์จริง) และเครดิตคนตอบที่เพิ่งจับคู่ได้
   Object.assign(x, { status:m.status, error:m.error, unsent:m.unsent, line_msg_id:m.line_msg_id, quote_token:m.quote_token,
-                     msg_type:m.msg_type, content:m.content, file_name:m.file_name, card:m.card, staff_email:m.staff_email, sender_name:m.sender_name, prod_tags:m.prod_tags });
+                     msg_type:m.msg_type, content:m.content, file_name:m.file_name, card:m.card, staff_email:m.staff_email, sender_name:m.sender_name, prod_tags:m.prod_tags,
+                     transcript:m.transcript });   // v2.60 ถอดเสียงเสร็จหลังข้อความขึ้นแล้ว (cron ทุก 5 นาที) → เติมตัวหนังสือใต้คลิปทันที ไม่ต้องรีเฟรช
   renderMsgs(list);
 }
 
@@ -5948,7 +6010,10 @@ async function newLinkCode(){
         <br>ยังไม่ได้เพิ่มเพื่อน? กดปุ่มกลางก่อน · ปุ่มไม่ทำงาน ส่งรหัส <b>${esc(code)}</b> ในแชท 1:1 กับ <b>${esc(curOaId())}</b> เองก็ได้
         <br>ระบบจะตอบยืนยัน แล้วหน้านี้จะขึ้น "ผูกแล้ว" เอง</div>
       <div class="txt-sm txt-muted mt-8" id="linkCountdown"></div>`;
-    const tick = () => { const el = $('linkCountdown'); if(!el) return; const left = exp - Date.now(); if(left <= 0){ el.textContent = 'รหัสหมดอายุแล้ว — ขอรหัสใหม่ได้เลย'; return; } el.textContent = `รหัสใช้ได้อีก ${Math.floor(left/60000)}:${pad(Math.floor(left % 60000 / 1000))} นาที · ใช้ได้ครั้งเดียว`; linkTimer = setTimeout(tick, 1000); };
+    const mine0 = [...people.values()].filter(p => p.member_email === me.email).length; let n = 0;
+    const tick = () => { const el = $('linkCountdown'); if(!el) return; const left = exp - Date.now(); if(left <= 0){ el.textContent = 'รหัสหมดอายุแล้ว — ขอรหัสใหม่ได้เลย'; return; } el.textContent = `รหัสใช้ได้อีก ${Math.floor(left/60000)}:${pad(Math.floor(left % 60000 / 1000))} นาที · ใช้ได้ครั้งเดียว`;
+      if(!DEMO && ++n % 6 === 0) loadPeople().then(() => { if([...people.values()].filter(p => p.member_email === me.email).length > mine0){ clearTimeout(linkTimer); refreshPeopleCards(); showToast('ผูก LINE แล้ว ✓', 'success'); } }).catch(() => {});   // v2.60 ไม่มี realtime ของ pur_people แล้ว
+      linkTimer = setTimeout(tick, 1000); };
     clearTimeout(linkTimer);      // ขอรหัสซ้ำ → หยุดตัวนับของรหัสเก่า ไม่งั้นสองตัวเขียนทับบรรทัดเดียวกันสลับกันทุกวินาที
     tick();
   }catch(e){ if(e.message !== 'demo') showToast(e.message, 'error'); }
