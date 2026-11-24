@@ -9,13 +9,13 @@
 <meta name="apple-mobile-web-app-title" content="Rattana One Chat">
 <meta name="theme-color" content="#0d1b3e">
 <!-- แอพรุ่นก่อน v2.0 หาเลขเวอร์ชันด้วยชื่อเดิม "Rattana Purchase Chat vX" ใน 1,500 ไบต์แรก — ป้ายนี้ทำให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบ "มีเวอร์ชันใหม่" -->
-<meta name="x-app-legacy" content="Rattana Purchase Chat v2.63">
+<meta name="x-app-legacy" content="Rattana Purchase Chat v2.64">
 <!-- แอพรุ่น v2.0–v2.07 หาเลขเวอร์ชันด้วยชื่อ "RTN Chat Hub vX" — คงไว้ให้เครื่องที่ยังเปิดรุ่นเก่าเห็นแถบอัปเดต -->
-<meta name="x-app-legacy2" content="RTN Chat Hub v2.63">
-<title>Rattana One Chat v2.63</title>
+<meta name="x-app-legacy2" content="RTN Chat Hub v2.64">
+<title>Rattana One Chat v2.64</title>
 <script type="application/json" id="whatsNew">{"items":[
-["⚡","โหมดชั่วคราวเร็วขึ้น","ข้อความใหม่ขึ้นภายในไม่กี่วินาที"],
-["💬","คำตอบจาก OA Manager","คำตอบที่พิมพ์ใน OA Manager ขึ้นในโหมดชั่วคราว (ต้องอัปเดตส่วนขยาย 3.6.0)"]
+["⚡","เปิดแชทไวขึ้น","แชทที่รอตอบและแชทล่าสุดโหลดไว้ล่วงหน้า กดแล้วขึ้นทันที"],
+["🔄","ปุ่มรีเฟรชใช้ได้แล้ว","กดรีเฟรชด้านบนในโหมดชั่วคราวไม่ขึ้นข้อความผิดพลาดแล้ว"]
 ]}</script>
 <link rel="icon" id="favicon" type="image/png" href="">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -1207,7 +1207,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
     <div id="liteOffer" style="margin-top:10px"><button class="btn btn-outline btn-sm" type="button" onclick="liteSetup()">🛟 ใช้โหมดชั่วคราว (Apps Script)</button></div>
     <div class="lg-wait" role="status"><div class="lg-spin"></div><b id="lgWaitMsg">กำลังเปิดแอพ…</b><div class="sub" id="lgWaitSub"></div>
       <div class="acts"><button class="btn btn-gold" type="button" onclick="retryGate()">ลองใหม่เดี๋ยวนี้</button><button class="btn btn-outline" type="button" onclick="doLogout()">ออกจากระบบ</button></div></div>
-    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.63 · 24/11/2569</div>
+    <div style="font-size:10px;color:var(--sub);margin-top:14px">Rattana One Chat v2.64 · 24/11/2569</div>
   </div>
 </div>
 
@@ -1257,7 +1257,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
   <i class="brand-mark" style="width:40px;height:40px" aria-hidden="true"></i>
   <div style="min-width:0" id="hdrAcct" onclick="toggleAcctMenu(event)">
     <div class="logo-text">Rattana <span>One Chat</span></div>
-    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.63</span>
+    <span class="logo-sub" id="hdrGreet">แชท LINE · v2.64</span>
   </div>
   <div class="hdr-r">
     <div class="noti-wrap" id="notiWrap">
@@ -1555,7 +1555,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  Rattana One Chat v2.63 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
+//  Rattana One Chat v2.64 (เดิม RTN Chat Hub) — แชท LINE OA หลายบัญชี (จัดซื้อ · Rattana Official · Rattana Mart) + แดชบอร์ดการตอบแชท
 //  (เดิมชื่อ Rattana Purchase Chat — v2.0 22/09/2569 เพิ่มหลายบัญชี: ล็อกอินครั้งเดียว เลือกบัญชี สิทธิ์และการตั้งค่าแยกต่อบัญชี)
 //  v2.01: ส่งเร็วขึ้น — เรียก pur-send ที่โตเกียว (ข้างฐานข้อมูล) + ปลุกเครื่องไว้ตอนเริ่มพิมพ์
 //  v2.02: บัญชีเลือกได้ว่า "แบ่งงานรายแชท" หรือไม่ (pur_settings.use_assignee) — ปิดแล้วซ่อนผู้รับผิดชอบ/รหัส PU ทั้งแอพ
@@ -1620,6 +1620,7 @@ body.dark .ov-g.good .w{color:#7be0a3}body.dark .ov-g.bad .w{color:#ff8a7e}
 //  v2.61 (24/11/2569): 🛟 โหมดชั่วคราว (One Chat Lite บน Apps Script + Google Sheet) สลับได้ที่หน้าล็อกอิน/แถบทอง — อ่าน/ตอบแชท LINE 3 บัญชีตอน Supabase ปิด · หน้าล็อกอินเช็คว่าระบบหลักถูกระงับไหม
 //  v2.62 (24/11/2569): โหมดชั่วคราว (Lite v1.3) ส่งรูป/ไฟล์/สติกเกอร์ · ข้อความตอบด่วน · เสร็จแล้ว/ไม่ต้องตอบ · รูปโปรไฟล์แชท · สติกเกอร์ขาเข้าแสดงเป็นรูป
 //  v2.63 (24/11/2569): โหมดชั่วคราวเช็คการเปลี่ยนแปลงทุก 4 วินาที (Lite v1.4 apiStamp) แชทใหม่ขึ้นเร็วขึ้น
+//  v2.64 (24/11/2569): โหมดชั่วคราวดึงข้อความล่วงหน้า (msgsMany · Lite v1.6 แคชต่อแชท) เปิดแชทขึ้นทันที · ปุ่มรีเฟรชไม่เรียก Supabase · เทียบข้อความใหม่ด้วยรหัสข้อความสุดท้าย
 //  ฐานข้อมูล: Supabase (ตาราง pur_*  ดู supabase/pur-schema.sql)
 //  ส่งข้อความ: Edge Function pur-send · รับข้อความ: pur-webhook-line
 // ═══════════════════════════════════════════════════════════
@@ -1742,9 +1743,39 @@ async function liteLoadChats(){
   chatById = new Map(chats.map(c => [c.id, c]));
   detectNew(before); renderList(); updateBadges();
   if(activeId && chatById.get(activeId)) renderChatHeader(chatById.get(activeId));
+  litePrefetch();   // v2.64
 }
 async function liteLoadMsgs(chatId){
+  const c = chatById.get(chatId), seen = c && c.last_message_at;
   const rows = await liteApi('msgs', [acct.slug, chatId]);
+  liteGot[chatId] = seen;
+  return liteMap(chatId, rows);
+}
+// v2.64 ดึงล่วงหน้า: แชทที่เปิดอยู่ + รอตอบ + ล่าสุด (เฉพาะที่มีข้อความใหม่) ในคำขอเดียว → กดเปิดแชทแล้วขึ้นทันที
+const liteGot = {};   // chatId → last_message_at ตอนดึงข้อความ (เท่ากัน = ข้อความในเครื่องล่าสุดแล้ว)
+const liteSig = (l) => l.length + ':' + (l.length ? l[l.length - 1].id : '');
+let litePfBusy = false, litePfAgain = false;
+async function litePrefetch(){
+  if(litePfBusy){ litePfAgain = true; return; }
+  const a = acct; if(!a || !chats.length) return;
+  litePfBusy = true;
+  try{
+    const order = [chatById.get(activeId), ...chats.filter(c => c.awaiting_since), ...chats.slice(0, 12)].filter(Boolean);
+    const ids = [];
+    for(const c of order){ if(ids.length >= 15) break; if(!ids.includes(c.id) && liteGot[c.id] !== c.last_message_at) ids.push(c.id); }
+    if(!ids.length) return;
+    const seen = Object.fromEntries(ids.map(id => [id, chatById.get(id)?.last_message_at]));
+    const map = await liteApi('msgsMany', [a.slug, ids]);
+    if(acct?.id !== a.id || !map) return;
+    for(const id of ids){
+      if(!map[id]) continue;
+      const list = liteMap(id, map[id]); liteGot[id] = seen[id];
+      if(activeId === id && liteSig(list) !== liteMsgN[id]){ liteMsgN[id] = liteSig(list); renderMsgs(list); }
+    }
+  }catch(e){ console.warn('lite prefetch:', e.message); }
+  finally{ litePfBusy = false; if(litePfAgain){ litePfAgain = false; litePrefetch(); } }
+}
+function liteMap(chatId, rows){
   const list = (rows || []).map(m => {
     const out = m.dir === 'out', media = m.media ? 'gd:' + m.media : '';
     const stk = /^stk:(\d+)/.exec(m.text || '');
@@ -1770,7 +1801,7 @@ async function liteSendMedia(chatId, kind, blob, name){
   }catch(e){ showToast('ส่งไม่สำเร็จ: ' + e.message, 'error', 6000); }
 }
 async function liteRefreshActive(chatId){
-  const l = await liteLoadMsgs(chatId); liteMsgN[chatId] = l.length;
+  const l = await liteLoadMsgs(chatId); liteMsgN[chatId] = liteSig(l);
   if(activeId === chatId){ renderMsgs(l); scrollBottom(); }
   liteLoadChats().catch(() => {});
 }
@@ -1794,11 +1825,9 @@ function startLitePoll(){
     try{
       const t = await liteApi('stamp').catch(() => 0);
       if(t ? (t === liteStamp && Date.now() - liteFullAt < 60000) : Date.now() - liteFullAt < 12000) return;   // Lite รุ่นเก่า (ไม่มี stamp) = โหลดทุก 12 วิแบบเดิม
+      if(t && t === liteStamp && activeId) delete liteGot[activeId];   // โหลดกันพลาด 60 วิ → ดึงแชทที่เปิดอยู่ใหม่ด้วย
       liteStamp = t; liteFullAt = Date.now();
-      await liteLoadChats();
-      const id = activeId; if(!id) return;
-      const list = await liteLoadMsgs(id);
-      if(activeId === id && list.length !== liteMsgN[id]){ liteMsgN[id] = list.length; renderMsgs(list); }
+      await liteLoadChats();   // v2.64 ข้อความแชทที่เปิด/รอตอบ ดึงต่อใน litePrefetch
     }catch(e){ console.warn('lite poll:', e.message); }
     finally{ liteBusy = false; }
   }, 4000);
@@ -2201,7 +2230,11 @@ async function fetchMsgPage(chatId, before){
 }
 async function loadMsgs(chatId){
   if(DEMO) return msgCache[chatId] || [];
-  if(LITE){ const l = await liteLoadMsgs(chatId); liteMsgN[chatId] = l.length; return l; }   // v2.61
+  if(LITE){   // v2.61 · v2.64 ข้อความในเครื่องล่าสุดอยู่แล้ว (ดึงล่วงหน้าไว้) = ไม่ต้องรอเน็ต
+    const c = chatById.get(chatId);
+    if(msgCache[chatId] && c && liteGot[chatId] === c.last_message_at){ liteMsgN[chatId] = liteSig(msgCache[chatId]); return msgCache[chatId]; }
+    const l = await liteLoadMsgs(chatId); liteMsgN[chatId] = liteSig(l); return l;
+  }
   const rows = (await fetchMsgPage(chatId)).reverse();                  // เก่า → ใหม่
   const prev = msgCache[chatId] || [], meta = msgMeta[chatId] || (msgMeta[chatId] = {});
   const tmp = prev.filter(m => m.tmp);                                  // ฟองที่กำลังส่งอยู่ ยังไม่มีในฐานข้อมูล
@@ -2230,6 +2263,7 @@ async function refreshAll(){
   const b = $('refreshBtn'); b.disabled = true; b.style.transition = 'transform .6s'; b.style.transform = 'rotate(360deg)';
   try{
     if(DEMO){ renderList(); if(view === 'dash') renderDash(); }
+    else if(LITE){ if(activeId) delete liteGot[activeId]; await liteLoadChats(); if(activeId) await liteRefreshActive(activeId); }   // v2.64 โหมดชั่วคราว ไม่เรียก Supabase
     else {
       await Promise.all([loadMembers(), loadPeople(), loadSettings()]);
       await loadChats();
@@ -2624,7 +2658,8 @@ async function openChat(id){
   renderChatHeader(c);
   $('chatEmpty').style.display = 'none'; $('chatContent').style.display = 'flex';
   if(window.innerWidth < 768) $('chatPane').classList.add('open');
-  $('msgsArea').innerHTML = '<div class="conv-empty">กำลังโหลดข้อความ…</div>';
+  if(LITE && msgCache[id]){ renderMsgs(msgCache[id]); scrollBottom(); }   // v2.64 แสดงที่ดึงล่วงหน้าไว้ก่อน แล้วค่อยอัพเดท
+  else $('msgsArea').innerHTML = '<div class="conv-empty">กำลังโหลดข้อความ…</div>';
   try{
     const msgs = await loadMsgs(id); if(activeId !== id) return; renderMsgs(msgs); renderList();
     const mineProd = myMentions(c).some(isProdTag);
@@ -3602,7 +3637,7 @@ async function sendText(){
   if(DEMO){ demoBlock(); return; }
   if(LITE){                                                              // v2.61 โหมดชั่วคราว: ส่งข้อความผ่าน Apps Script
     const chatId = activeId; inp.value = ''; grow(inp); syncSend(); clearQuote();
-    try{ await liteApi('send', [acct.slug, chatId, text, me.nick]); const l = await liteLoadMsgs(chatId); liteMsgN[chatId] = l.length; if(activeId === chatId){ renderMsgs(l); scrollBottom(); } liteLoadChats(); }
+    try{ await liteApi('send', [acct.slug, chatId, text, me.nick]); const l = await liteLoadMsgs(chatId); liteMsgN[chatId] = liteSig(l); if(activeId === chatId){ renderMsgs(l); scrollBottom(); } liteLoadChats(); }
     catch(e){ inp.value = text; grow(inp); syncSend(); showToast('ส่งไม่สำเร็จ: ' + e.message, 'error', 5000); }
     return;
   }
